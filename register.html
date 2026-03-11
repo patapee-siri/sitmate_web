@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="style.css"></head>
+<body>
+    <div class="card">
+        <h2>สมัครสมาชิก</h2>
+        <form id="regForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">ลงทะเบียน</button>
+        </form>
+        <p style="text-align:center"><a href="login.html">มีบัญชีอยู่แล้ว? เข้าสู่ระบบ</a></p>
+    </div>
+    <script>
+        document.getElementById('regForm').onsubmit = (e) => {
+            e.preventDefault();
+            localStorage.setItem('user', document.getElementById('username').value);
+            localStorage.setItem('pass', document.getElementById('password').value);
+            alert("สมัครสำเร็จ!"); window.location.href = 'login.html';
+        };
+    </script>
+</body>
+</html>

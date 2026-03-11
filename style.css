@@ -1,0 +1,31 @@
+body {
+    /* ตั้งค่าให้รูปภาพเป็นพื้นหลัง */
+    background-image: url('background01.png');
+    
+    /* ปรับให้รูปภาพคลุมเต็มหน้าจอ */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* เพิ่มความมืดเล็กน้อยเพื่อให้ตัวหนังสืออ่านง่ายขึ้น (ถ้าจำเป็น) */
+    background-attachment: fixed;
+    
+    /* ตั้งค่าฟอนต์และจัดวาง */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* เพิ่มส่วนนี้เพื่อให้ Card มีความโปร่งใส จะได้เห็นรูปพื้นหลังด้านหลัง */
+.card {
+    background: rgba(255, 255, 255, 0.9); /* สีขาวแบบโปร่งใส 90% */
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-align: center;
+}
