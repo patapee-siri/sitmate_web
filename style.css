@@ -1,122 +1,172 @@
-/* style.css */
-/* 1. รีเซ็ตและตั้งค่าพื้นฐาน */
+/* =========================================================
+   1. โครงสร้างและรีเซ็ตพื้นฐาน (Reset & Basic)
+   ========================================================= */
 body, html {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    overflow: hidden; /* ป้องกันหน้าจอเลื่อนไปมา */
+    overflow: hidden;
 }
 
-/* 2. ตั้งค่าภาพพื้นหลังหลัก (วิวรถไฟ) */
 body {
-    /* ** ให้ใช้ภาพพื้นหลังตามภาพตัวอย่างของคุณ (background01.png) ** */
     background-image: url('background01.png');
     background-size: cover;
-    background-position: center;
+    background-position: center 0px; 
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
-    align-items: center; /* จัดให้อยู่กลางจอ */
+    align-items: center;
 }
 
-/* 3. คอนเทนเนอร์หลักสำหรับ iPhone 11 */
+/* =========================================================
+   2. คอนเทนเนอร์หลักสำหรับ iPhone 11
+   ========================================================= */
 .iphone-container {
     width: 100%;
-    max-width: 414px; /* ความกว้างสูงสุดของ iPhone 11 */
+    max-width: 414px;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* จัดวางคอนเทนต์จากบนลงล่าง */
+    justify-content: flex-start;
     align-items: center;
     position: relative;
     box-sizing: border-box;
-    /* เพิ่ม Safe Area สำหรับ iPhone 11 (ด้านบน) */
     padding-top: env(safe-area-inset-top);
 }
 
-/* 4. ส่วนโลโก้ (ด้านบน) */
+/* =========================================================
+   3. แผ่นพื้นหลังสีขาวทึบแสง (Solid Panel) - เลื่อนลง 50px
+   ========================================================= */
+.glass-panel {
+    position: absolute;
+    top: 150px; /* เดิม 100px + เลื่อนลง 50px */
+    left: 0;
+    width: 100%;
+    height: 460px; 
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* =========================================================
+   4. จัดการเลเยอร์เนื้อหา (Content Layers)
+   ========================================================= */
+.logo-section, .product-id-section, .product-pic-section, .button-section {
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================================
+   5. ส่วนโลโก้ (Logo - คงที่)
+   ========================================================= */
 .logo-section {
     width: 100%;
     text-align: center;
-    padding: 30px 0;
+    padding: 30px 0 10px 0;
 }
 .logo-section img {
-    height: 60px; /* ** คุณสามารถปรับความสูงของ logo.png ได้ตามต้องการ ** */
+    height: 50px;
     width: auto;
 }
 
-/* 5. ส่วน Product ID (ใต้โลโก้) */
+/* =========================================================
+   6. ส่วนแสดงรหัสสินค้า (Product ID - เลื่อนลง 50px)
+   ========================================================= */
 .product-id-section {
     width: 100%;
     text-align: center;
-    padding: 10px 0;
-    color: #444; /* สีเทาเข้ม */
+    padding: 75px 0 5px 0; /* เดิม 25px + เลื่อนลง 50px */
+    color: #81796D; 
 }
 .product-id-section p {
     margin: 5px 0;
     font-size: 16px;
     font-weight: bold;
+    color: #81796D;
+    position: relative;
+    display: inline-block;
 }
 .product-id-section h1 {
     margin: 0;
-    font-size: 32px;
+    font-size: 36px;
     font-weight: bold;
-    color: #444; /* สีเทาเข้ม */
+    color: #81796D;
 }
-/* จุดแดงหน้าคำว่า Product ID */
+
+/* ย้ายจุดแดงไปข้างหลัง Product ID */
 .red-dot {
-    display: inline-block;
+    position: absolute;
+    right: -20px; /* ปรับตำแหน่งจุดแดงให้ไปอยู่หลังข้อความ */
+    top: 50%;
+    transform: translateY(-50%);
     width: 10px;
     height: 10px;
-    background-color: #ff3b30; /* สีแดง Apple */
+    background-color: #ff3b30;
     border-radius: 50%;
-    margin-right: 8px;
-    vertical-align: middle;
 }
 
-/* 6. ส่วนรูปสินค้า (กลางจอ) */
+/* =========================================================
+   7. ส่วนรูปสินค้า (Product Image - เลื่อนลง 50px และขยับซ้าย 3px)
+   ========================================================= */
 .product-pic-section {
-    width: 90%;
+    width: 100%;
     text-align: center;
-    padding: 40px 0;
-}
-.product-pic-section img {
-    width: 100%; /* ให้ภาพสินค้ากว้างเต็มคอนเทนเนอร์ย่อย */
-    max-width: 320px; /* ** คุณสามารถปรับขนาดสูงสุดของ index_pic_01.png ได้ตามต้องการ ** */
-    height: auto;
-    /* เพิ่มเงาเล็กน้อยเพื่อให้สินค้าดูมีมิติ */
-    filter: drop-shadow(0px 8px 15px rgba(0,0,0,0.3));
+    padding: 40px 0 10px 0; /* คงเดิมจากที่ปรับไว้ */
 }
 
-/* 7. ส่วน 3 ปุ่ม (ด้านล่าง) */
+.product-pic-section img {
+    width: 100%;
+    max-width: 310px; 
+    height: auto;
+    filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.2));
+    
+    /* ขยายรูป */
+    transform: scale(1.3); 
+    margin-top: 15px; 
+    margin-bottom: 15px;
+
+    /* เพิ่มส่วนนี้เพื่อขยับรูปไปทางซ้าย 3px */
+    position: relative;
+    left: -5px;
+}
+
+/* =========================================================
+   8. ส่วนปุ่มกด 3 ปุ่ม (Buttons - เลื่อนลง 50px)
+   ========================================================= */
 .button-section {
     position: absolute;
-    bottom: calc(25% + env(safe-area-inset-bottom)); /* ** อยู่เหนือภูมิประเทศ 25% ของจอ และหลบ Safe Area ด้านล่าง ** */
+    bottom: calc(23% - 70px); /* เลื่อนจากเดิมลงไปอีก 50px */
     width: 90%;
     display: flex;
-    justify-content: space-between; /* จัดให้ปุ่มห่างกันอย่างสวยงาม */
-    gap: 15px; /* ระยะห่างระหว่างปุ่ม */
+    justify-content: space-between;
+    gap: 12px;
 }
 
-/* 8. ตกแต่งปุ่มให้เหมือนภาพตัวอย่าง */
 .btn-orange {
-    flex: 1; /* ให้ปุ่มขยายกว้างเท่าๆ กัน */
-    padding: 16px 10px;
-    font-size: 16px;
+    flex: 1;
+    padding: 16px 5px;
+    font-size: 14px;
     font-weight: bold;
     border: none;
-    border-radius: 12px;
-    background-color: #d89647; /* สีส้มทองตามภาพตัวอย่าง */
+    border-radius: 14px;
+    background-color: #d89647;
     color: white;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    transition: transform 0.1s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     text-align: center;
-    text-decoration: none; /* สำหรับลิงก์ text */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease;
 }
 
 .btn-orange:active {
-    transform: scale(0.98);
+    transform: scale(0.95);
 }
