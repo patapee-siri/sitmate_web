@@ -68,7 +68,7 @@ body {
 .logo-section {
     width: 100%;
     text-align: center;
-    padding: 55px 0 10px 0;
+    padding: 50px 0 10px 0;
 }
 .logo-section img {
     height: 50px;
@@ -81,7 +81,7 @@ body {
 .product-id-section {
     width: 100%;
     text-align: center;
-    padding: 75px 0 5px 0; /* เดิม 25px + เลื่อนลง 50px */
+    padding: 70px 0 5px 0; /* เดิม 25px + เลื่อนลง 50px */
     color: #81796D; 
 }
 .product-id-section p {
