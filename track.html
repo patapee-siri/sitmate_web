@@ -1,15 +1,56 @@
 <!DOCTYPE html>
-<html>
-<head><link rel="stylesheet" href="style.css"></head>
-<body>
-    <div class="card">
-        <h2>Track Status</h2>
-        <p>สินค้าหมายเลข: #SM001</p>
-        <div style="background:#eef; padding:10px; border-radius:5px;">
-            สถานะปัจจุบัน: <b>อยู่ระหว่างการใช้งาน</b><br>
-            คืนของได้ที่: สถานีหัวลำโพง
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Track Status</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="track-page">
+    <div class="iphone-container">
+        <div class="glass-panel"></div>
+
+        <div class="logo-section">
+            <img src="logo.png" alt="SITMATE">
         </div>
-        <button onclick="history.back()">ย้อนกลับ</button>
+
+        <div class="product-id-section">
+            <p>Product ID <span class="green-dot"></span></p>
+            <h1>ST - 00126</h1>
+        </div>
+
+        <div class="timeline-container">
+            <p class="date-orange">18 March 2026</p>
+            <div class="timeline">
+                <div class="step completed">
+                    <div class="time orange-text">10:56</div>
+                    <div class="label orange-text">Submit Rental Request</div>
+                </div>
+                <div class="step completed">
+                    <div class="time orange-text">10:57</div>
+                    <div class="label orange-text">Payment Successful</div>
+                </div>
+                <div class="step active completed">
+                    <div class="time orange-text active-text">13:10</div>
+                    <div class="label orange-text active-text">Currently Rented</div>
+                </div>
+                <div class="step">
+                    <div class="time"></div>
+                    <div class="label">Return at Destination</div>
+                </div>
+                <div class="step">
+                    <div class="time"></div>
+                    <div class="label">Inspect Product</div>
+                </div>
+                <div class="step">
+                    <div class="time"></div>
+                    <div class="label">Refund Deposit</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-wrapper">
+            <button class="btn-orange-compact" onclick="history.back()">Report a Problem</button>
+        </div>
     </div>
 </body>
 </html>

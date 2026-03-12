@@ -1,3 +1,7 @@
+/*=========================================================
+/*=========================================================
+/*=========================================================
+
 /* =========================================================
    1. โครงสร้างและรีเซ็ตพื้นฐาน (Reset & Basic)
    ========================================================= */
@@ -171,3 +175,83 @@ body {
 .btn-orange:active {
     transform: scale(0.95);
 }
+
+/* =========================================================
+   Timeline Layout - เส้นตรงกลาง แยกเวลาซ้าย ข้อความขวา
+   ========================================================= */
+/* การจัดวางปุ่มให้กึ่งกลางและขนาดพอดี */
+.button-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px; /* ระยะห่างจากส่วนตูดของ Timeline */
+    z-index: 1;
+    position: relative;
+}
+
+.btn-orange-compact {
+    padding: 12px 24px; /* ปรับให้พอดีกับข้อความ */
+    border: none;
+    border-radius: 20px;
+    background-color: #d89647;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    white-space: nowrap; /* ป้องกันข้อความขึ้นบรรทัดใหม่ */
+}
+
+/* พื้นหลังแผ่นสีขาว - ให้ยาวถึงล่าง */
+.glass-panel {
+    position: absolute; 
+    top: 150px; 
+    left: 0; 
+    width: 100%;
+    height: calc(100vh - 150px); 
+    background: rgba(255, 255, 255, 0.85);
+    z-index: 0; 
+    pointer-events: none;
+}
+
+/* Product ID - จุดเขียว */
+.green-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #28a745;
+    border-radius: 50%;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+/* วันที่ - สีส้มตัวหนา */
+.date-orange {
+    font-weight: bold;
+    color: #d89647;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+/* Timeline สีส้ม */
+.orange-text { color: #d89647 !important; }
+.active-text { font-weight: bold !important; }
+
+.timeline { position: relative; width: 100%; margin-top: 20px; }
+.timeline::before {
+    content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+    width: 3px; background: #d89647; transform: translateX(-50%); z-index: 0;
+}
+
+.step { display: flex; align-items: center; width: 100%; margin-bottom: 30px; position: relative; }
+.step::after {
+    content: ''; position: absolute; left: 50%; width: 12px; height: 12px;
+    background: white; border: 3px solid #d89647; border-radius: 50%;
+    transform: translateX(-50%); z-index: 1;
+}
+
+.step.completed::after { background: #d89647 !important; border-color: #d89647 !important; }
+
+.time { width: 50%; text-align: right; padding-right: 15px; font-size: 14px; }
+.label { width: 50%; text-align: left; padding-left: 15px; font-size: 14px; }
