@@ -1,31 +1,122 @@
+/* style.css */
+/* 1. รีเซ็ตและตั้งค่าพื้นฐาน */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow: hidden; /* ป้องกันหน้าจอเลื่อนไปมา */
+}
+
+/* 2. ตั้งค่าภาพพื้นหลังหลัก (วิวรถไฟ) */
 body {
-    /* ตั้งค่าให้รูปภาพเป็นพื้นหลัง */
+    /* ** ให้ใช้ภาพพื้นหลังตามภาพตัวอย่างของคุณ (background01.png) ** */
     background-image: url('background01.png');
-    
-    /* ปรับให้รูปภาพคลุมเต็มหน้าจอ */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
-    /* เพิ่มความมืดเล็กน้อยเพื่อให้ตัวหนังสืออ่านง่ายขึ้น (ถ้าจำเป็น) */
-    background-attachment: fixed;
-    
-    /* ตั้งค่าฟอนต์และจัดวาง */
-    font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
+    align-items: center; /* จัดให้อยู่กลางจอ */
 }
 
-/* เพิ่มส่วนนี้เพื่อให้ Card มีความโปร่งใส จะได้เห็นรูปพื้นหลังด้านหลัง */
-.card {
-    background: rgba(255, 255, 255, 0.9); /* สีขาวแบบโปร่งใส 90% */
-    width: 90%;
-    max-width: 400px;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+/* 3. คอนเทนเนอร์หลักสำหรับ iPhone 11 */
+.iphone-container {
+    width: 100%;
+    max-width: 414px; /* ความกว้างสูงสุดของ iPhone 11 */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* จัดวางคอนเทนต์จากบนลงล่าง */
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+    /* เพิ่ม Safe Area สำหรับ iPhone 11 (ด้านบน) */
+    padding-top: env(safe-area-inset-top);
+}
+
+/* 4. ส่วนโลโก้ (ด้านบน) */
+.logo-section {
+    width: 100%;
     text-align: center;
+    padding: 30px 0;
+}
+.logo-section img {
+    height: 60px; /* ** คุณสามารถปรับความสูงของ logo.png ได้ตามต้องการ ** */
+    width: auto;
+}
+
+/* 5. ส่วน Product ID (ใต้โลโก้) */
+.product-id-section {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    color: #444; /* สีเทาเข้ม */
+}
+.product-id-section p {
+    margin: 5px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+.product-id-section h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: bold;
+    color: #444; /* สีเทาเข้ม */
+}
+/* จุดแดงหน้าคำว่า Product ID */
+.red-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #ff3b30; /* สีแดง Apple */
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* 6. ส่วนรูปสินค้า (กลางจอ) */
+.product-pic-section {
+    width: 90%;
+    text-align: center;
+    padding: 40px 0;
+}
+.product-pic-section img {
+    width: 100%; /* ให้ภาพสินค้ากว้างเต็มคอนเทนเนอร์ย่อย */
+    max-width: 320px; /* ** คุณสามารถปรับขนาดสูงสุดของ index_pic_01.png ได้ตามต้องการ ** */
+    height: auto;
+    /* เพิ่มเงาเล็กน้อยเพื่อให้สินค้าดูมีมิติ */
+    filter: drop-shadow(0px 8px 15px rgba(0,0,0,0.3));
+}
+
+/* 7. ส่วน 3 ปุ่ม (ด้านล่าง) */
+.button-section {
+    position: absolute;
+    bottom: calc(25% + env(safe-area-inset-bottom)); /* ** อยู่เหนือภูมิประเทศ 25% ของจอ และหลบ Safe Area ด้านล่าง ** */
+    width: 90%;
+    display: flex;
+    justify-content: space-between; /* จัดให้ปุ่มห่างกันอย่างสวยงาม */
+    gap: 15px; /* ระยะห่างระหว่างปุ่ม */
+}
+
+/* 8. ตกแต่งปุ่มให้เหมือนภาพตัวอย่าง */
+.btn-orange {
+    flex: 1; /* ให้ปุ่มขยายกว้างเท่าๆ กัน */
+    padding: 16px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    background-color: #d89647; /* สีส้มทองตามภาพตัวอย่าง */
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: transform 0.1s;
+    text-align: center;
+    text-decoration: none; /* สำหรับลิงก์ text */
+}
+
+.btn-orange:active {
+    transform: scale(0.98);
 }
