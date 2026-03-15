@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Checkout - SITMATE</title>
+    <title>Pay - SITMATE</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="how-to-page checkout-page">
@@ -23,7 +23,7 @@
             </div>
 
             <div class="checkout-progress">
-                <div class="checkout-step active">
+                <div class="checkout-step">
                     <div class="checkout-step-label">Select Pickup and<br>Return Location</div>
                     <div class="checkout-step-dot"></div>
                 </div>
@@ -31,7 +31,7 @@
                     <div class="checkout-step-label">Select Payment<br>Method</div>
                     <div class="checkout-step-dot"></div>
                 </div>
-                <div class="checkout-step">
+                <div class="checkout-step active">
                     <div class="checkout-step-label">Pay</div>
                     <div class="checkout-step-dot"></div>
                 </div>
@@ -39,40 +39,31 @@
         </div>
 
         <div class="checkout-content">
-            <div class="glass-box items-section">
-                <h2 class="box-title">Items</h2>
-                <div class="item-card">
-                    <img src="index_pic_01.png" alt="Product" class="item-img">
-                    
-                    <div class="item-details">
-                        <h3 class="product-id">ST - 00126</h3>
-                        <p class="price-green">40 THB</p>
-                        <p class="price-label">Subtotal</p>
-                        <p class="price-green">400 THB</p>
-                        <p class="price-label">Security Deposit</p>
-                    </div>
+            <div class="timer-text">02 : 08</div>
 
-                    <div class="item-action">
-                        <span class="add-more-text">Add more</span>
-                        <div class="scan-icon">-</div>
-                    </div>
+            <img src="qr_cash.jpg" class="qr-code-img" alt="QR Code Payment">
+
+            <div class="glass-box payment-form-box">
+                <div class="form-title">Enter details to receive deposit</div>
+                <div class="form-group">
+                    <label class="form-label">Bank Name</label>
+                    <input type="text" class="custom-input">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Input Bank Account Number</label>
+                    <input type="text" class="custom-input">
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="confirm-info" class="custom-checkbox">
+                    <label for="confirm-info">Confirm Information</label>
                 </div>
             </div>
 
-            <div class="glass-box total-section">
-                <h2 class="box-title">Total Price</h2>
-                <div class="input-group">
-                    <input type="text" class="date-input" readonly>
-                    <div class="to-text">To</div>
-                    <input type="text" class="date-input" readonly>
-                </div>
-            </div>
-
-            <div class="checkout-button-wrapper">
-                <button class="btn-orange continue-btn">Continue</button>
+            <div class="button-action-wrapper">
+                <button class="btn-orange-compact btn-back">Back</button>
+                <button class="btn-orange-compact">Continue</button>
             </div>
         </div>
-
     </div>
 </body>
 </html>
