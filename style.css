@@ -18,7 +18,20 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
 .logo-section img { height: 50px; }
 .product-id-section { width: 100%; text-align: center; padding: 70px 0 5px; color: #81796D; z-index: 1; }
 .product-id-section h1 { margin: 0; font-size: 36px; font-weight: bold; }
-.red-dot { position: absolute; right: -20px; top: 50%; width: 10px; height: 10px; background: #ff3b30; border-radius: 50%; transform: translateY(-50%); }
+
+/* ---- แก้ไขจุดสีแดงตรงนี้ ---- */
+.red-dot { 
+    display: inline-block; 
+    width: 10px; 
+    height: 10px; 
+    background: #ff3b30; 
+    border-radius: 50%; 
+    margin-left: 8px; /* ระยะห่างจากตัวอักษรด้านซ้าย */
+    vertical-align: middle; /* จัดให้อยู่กึ่งกลางบรรทัด */
+    position: relative;
+    top: -1px; /* ขยับขึ้นนิดนึงให้พอดีกับความสูงของฟอนต์ */
+}
+/* ------------------------ */
 
 .product-pic-section { width: 100%; text-align: center; padding: 40px 0 10px; z-index: 1; }
 .product-pic-section img { width: 100%; max-width: 310px; transform: scale(1.3); position: relative; left: -5px; margin-bottom: 15px; }
@@ -28,7 +41,6 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
    ========================================================= */
 .timeline { position: relative; width: 100%; margin-top: 10px; }
 
-/* จัดเส้นให้อยู่ที่สัดส่วน 35% ของหน้าจอ */
 .timeline::before { 
     content: ''; 
     position: absolute; 
@@ -40,10 +52,8 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
     z-index: 0; 
 }
 
-/* เพิ่มระยะห่างระหว่างแต่ละข้อ (margin-bottom) ให้โปร่งขึ้นนิดนึงเหมือนในรูป */
 .step { display: flex; align-items: center; width: 100%; margin-bottom: 25px; position: relative; }
 
-/* จุดวงกลม ให้วางที่ 35% เช่นเดียวกับเส้น และขยายขนาดจุดขึ้นเล็กน้อยให้ชัดขึ้น */
 .step::after { 
     content: ''; 
     position: absolute; 
@@ -58,7 +68,6 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
 }
 .step.completed::after { background: #d89647 !important; border-color: #d89647 !important; }
 
-/* กล่องเวลา: กว้าง 35% และดันขวาให้ห่างจากเส้น 20px */
 .time { 
     width: 35%; 
     text-align: right; 
@@ -68,7 +77,6 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
     box-sizing: border-box;
 }
 
-/* กล่องข้อความ: กว้าง 65% และดันซ้ายให้ห่างจากเส้น 20px */
 .label { 
     width: 65%; 
     text-align: left; 
@@ -84,10 +92,9 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
    5. ปุ่มกดและสไตล์เสริม
    ========================================================= */
 .button-section { position: absolute; bottom: calc(23% - 70px); width: 90%; display: flex; gap: 12px; z-index: 1; }
-.btn-orange, .btn-orange-compact { font-weight: bold; border: none; border-radius: 14px; background: #d89647; color: white; cursor: pointer; display: flex; justify-content: center; align-items: center; }
-.btn-orange { flex: 1; padding: 16px 5px; font-size: 16px; }
+.btn-orange, .btn-orange-compact { font-weight: bold; border: none; border-radius: 14px; background: #d89647; color: white; cursor: pointer; display: flex; justify-content: center; align-items: center; text-decoration: none; }
+.btn-orange { flex: 1; padding: 16px 5px; font-size: 16px; text-align: center; }
 .button-wrapper { width: 100%; display: flex; justify-content: center; margin-top: 30px; margin-bottom: 40px; z-index: 1; position: relative; }
-/* ปรับตัวหนังสือปุ่ม Back ให้ใหญ่ขึ้นเป็น 18px */
 .btn-orange-compact { padding: 12px 24px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-size: 18px; }
 
 .green-dot { display: inline-block; width: 10px; height: 10px; background: #28a745; border-radius: 50%; margin-left: 8px; }
@@ -109,65 +116,302 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
 .how-to-page .iphone-container::-webkit-scrollbar { display: none; }
 
 .top-section { background: white; padding: 20px; border-bottom: 2px solid #C28329; }
-.navbar { display: flex; justify-content: space-between; align-items: center; }
 
-/* ---- แก้ไขขนาดโลโก้ตรงนี้ ---- */
-.logo-small { height: 26px; } /* ลดขนาดโลโก้เล็กลง 25% (จากเดิม 35px) */
-/* ------------------------ */
+/* ---- ปรับ Navbar (ดึงขึ้น 5px) ---- */
+.navbar { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-top: -5px; /* ดึงเมนูขึ้น 5px */
+}
 
-.nav-links a { color: #C28329; margin-left: 10px; text-decoration: none; font-size: 16px; font-weight: bold; }
+.logo-small { height: 26px; } 
+
+/* ---- ปรับขนาดฟอนต์เมนูให้เล็กลง 20% และเป็นตัวบาง ---- */
+.nav-links a { 
+    color: #C28329; 
+    margin-left: 10px; 
+    text-decoration: none; 
+    font-size: 13px;       /* เล็กลง 20% */
+    font-weight: normal;   /* ใช้ตัวอักษรแบบบาง (ไม่หนา) */
+}
+
 .main-header { text-align: center; margin-top: 20px; }
+.logo-large { height: 40px; }
 
-/* ---- แก้ไขขนาดโลโก้ตรงนี้ ---- */
-.logo-large { height: 40px; } /* ลดขนาดโลโก้หลักลง 25% (จากเดิม 60px) */
-/* ------------------------ */
-
-
-/* ---- แก้ไขขนาดและตำแหน่งคำว่า How to Use ตรงนี้ ---- */
 .main-header h1 { 
     color: #C28329; 
-    font-size: 28px;       /* ลดขนาดลงประมาณ 20% (จากเดิม 36px) */
-    margin-top: 45px;      /* ดันให้ห่างจากโลโก้ด้านบนมากขึ้น */
-    margin-bottom: -15px;   /* ดึงให้ข้อความลงมาเกือบติดเส้นขอบล่าง */
+    font-size: 28px; 
+    margin-top: 45px; 
+    margin-bottom: -15px; 
 }
-/* ------------------------------------------- */
-
 
 .steps-container { padding: 20px; display: flex; flex-direction: column; gap: 40px; }
-.step-card { display: flex; align-items: center; gap: 20px; width: 100%; } /* นำบรรทัดนี้กลับมาเพื่อให้การเรียงสลับซ้าย-ขวาสมบูรณ์ */
-.step-card.left { justify-content: flex-start; }
-.step-card.right { justify-content: flex-end; }
+.step-card { display: flex; align-items: center; gap: 20px; width: 100%; } 
 
-.step-content { display: flex; flex-direction: column; align-items: center; width: 55%; background: white; padding: 15px 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+/* ---- ดันกล่องให้ชิดทะลุขอบหน้าจอ ---- */
+.step-card.left { justify-content: flex-start; margin-left: -25px; }
+.step-card.right { justify-content: flex-end; margin-right: -25px; } /* แก้ไข -25x เป็น -25px ให้ครับ */
+
+/* โครงสร้างกล่องพื้นฐาน */
+.step-content { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    
+    /* ให้กล่องขยายตามข้อความ และกำหนดความกว้างขั้นต่ำ/สูงสุดไว้ */
+    width: fit-content; 
+    min-width: 55%; 
+    max-width: 75%; /* ป้องกันไม่ให้กล่องยาวจนไปทับตัวเลขหรือทะลุจออีกฝั่ง */
+
+    background: white; 
+    padding: 15px 10px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+}
+
+/* ---- ปรับมุมกล่องให้มนแค่ 2 มุม และให้ฝั่งที่ติดขอบจอเป็นมุมฉาก (0px) ---- */
+/* Step ฝั่งซ้าย (มนเฉพาะขวาบน และ ขวาล่าง) */
+.step-card.left .step-content { 
+    border-radius: 0 20px 20px 0; 
+    padding-left: 20px; 
+}
+
+/* Step ฝั่งขวา (มนเฉพาะซ้ายบน และ ซ้ายล่าง) */
+.step-card.right .step-content { 
+    border-radius: 20px 0 0 20px; 
+    padding-right: 20px; 
+}
+
 .step-card img { width: 100%; border-radius: 10px; }
-.step-label { font-weight: bold; margin-top: 15px; text-align: center; color: #C28329; font-size: 18px; line-height: 1.3; }
-.step-number { font-size: 5rem; font-weight: bold; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
 
+.step-label { 
+    font-weight: bold; 
+    margin-top: 15px; 
+    text-align: center; 
+    color: #C28329; 
+    font-size: 18px; 
+    line-height: 1.3; 
+    
+    /* บังคับให้ข้อความอยู่บรรทัดเดียว ห้ามปัดตก */
+    white-space: nowrap; 
+}
+.step-number { font-size: 5rem; font-weight: bold; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
 /* =========================================================
    7. Track Status Page Specific
    ========================================================= */
-/* จัดกลุ่มปุ่มหน้า Track ให้อยู่แถวเดียวกัน เว้นระยะ และดันลงล่างสุด */
 .track-page .track-buttons {
-    margin-top: auto;      /* ดันกลุ่มปุ่มทั้งหมดลงไปล่างสุดของหน้าจอ */
-    padding-bottom: 40px;  /* เว้นระยะจากขอบล่างนิดหน่อยให้ดูสมดุล */
-    display: flex;         /* จัดให้อยู่ในแนวนอน */
-    justify-content: center; /* ให้อยู่ตรงกลางจอ */
-    gap: 15px;             /* ระยะห่างระหว่างปุ่ม (ปรับเพิ่มลดได้) */
+    margin-top: auto;
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
     width: 100%;
     z-index: 1;
 }
 
-/* ปรับขนาดปุ่มทั้งสองให้สมดุลกันในหน้าจอขนาดเล็ก */
 .track-buttons .btn-orange-compact {
     padding: 12px 15px;
     font-size: 16px;
-    flex: 1;               /* ให้ปุ่มยืดออกเท่าๆ กัน */
-    max-width: 165px;      /* จำกัดไม่ให้ปุ่มใหญ่เกินไป */
+    flex: 1;
+    max-width: 165px;
 }
 
-/* ทำให้ปุ่ม Back เป็นแบบโปร่ง (Outline) จะได้ไม่แย่งความเด่นกับปุ่มหลัก */
 .track-buttons .btn-back {
     background-color: white;
     color: #d89647;
     border: 2px solid #d89647;
+}
+
+/* =========================================================
+   8. Checkout Page Specific
+   ========================================================= */
+.checkout-page .iphone-container {
+    background: url('background01.png') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 20px 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.checkout-content::-webkit-scrollbar { display: none; }
+
+/* --- แถบสถานะ (Progress Bar แนวนอน) --- */
+.checkout-progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* จัดให้จุดอยู่ระดับเดียวกันด้านล่าง */
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+/* เส้นแนวนอนเชื่อมระหว่างจุด */
+.checkout-progress::before {
+    content: '';
+    position: absolute;
+    bottom: 7px; /* ให้อยู่กึ่งกลางจุดพอดี */
+    left: 16.66%; /* เริ่มที่กึ่งกลางของจุดแรก */
+    right: 16.66%; /* จบที่กึ่งกลางของจุดสุดท้าย */
+    height: 3px;
+    background-color: #C28329;
+    z-index: 0;
+}
+
+.checkout-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    z-index: 1;
+}
+
+.checkout-step-label {
+    font-size: 11px;
+    font-weight: bold;
+    color: #C28329;
+    text-align: center;
+    margin-bottom: 10px;
+    min-height: 28px; /* ล็อคความสูงเพื่อให้จุดด้านล่างตรงกันแม้จำนวนบรรทัดข้อความจะไม่เท่ากัน */
+    display: flex;
+    align-items: flex-end; /* ดันข้อความให้ชิดขอบล่างของพื้นที่ Label */
+    justify-content: center;
+}
+
+.checkout-step-dot {
+    width: 18px;
+    height: 18px;
+    background-color: white;
+    border: 2px solid #C28329;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+/* เปลี่ยนสีจุดสถานะปัจจุบัน */
+.checkout-step.active .checkout-step-dot {
+    background-color: #C28329;
+}
+
+/* --- กล่องพื้นหลังกระจก --- */
+.glass-box {
+    background: rgba(223, 203, 178, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.box-title {
+    color: #C28329;
+    font-size: 18px;
+    margin: 0 0 10px 5px;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+}
+
+/* --- ส่วนสินค้า (Items) --- */
+.item-card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.item-img {
+    width: 90px;
+    object-fit: contain;
+}
+
+.item-details {
+    flex: 1;
+}
+
+.product-id {
+    color: #C28329;
+    margin: 0 0 5px 0;
+    font-size: 16px;
+}
+
+.price-green {
+    color: #08E400; 
+    font-weight: bold;
+    font-size: 13px;
+    margin: 0;
+}
+
+.price-label {
+    color: #81796D;
+    font-size: 12px;
+    margin: 0 0 8px 0;
+}
+
+.item-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.add-more-text {
+    color: #C28329;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.scan-icon {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #C28329;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- ส่วน Total Price และช่อง Input --- */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.date-input {
+    width: 100%;
+    padding: 20px 15px;
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+    box-sizing: border-box;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.to-text {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* --- ปุ่ม Continue --- */
+.checkout-button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.continue-btn {
+    width: 200px;
+    font-size: 18px;
+    padding: 15px 0;
 }
