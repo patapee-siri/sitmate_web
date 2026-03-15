@@ -1,17 +1,78 @@
 <!DOCTYPE html>
-<html>
-<head><link rel="stylesheet" href="style.css"></head>
-<body>
-    <div class="card">
-        <h2>Rent Now</h2>
-        <label>เลือกสถานีปลายทาง:</label>
-        <select style="width:100%; padding:10px; margin:10px 0;">
-            <option>สถานีกลางบางซื่อ</option>
-            <option>สถานีหัวลำโพง</option>
-        </select>
-        <p>ค่ามัดจำ: 100 บาท</p>
-        <button onclick="alert('ชำระเงินมัดจำเรียบร้อยแล้ว!')">จ่ายมัดจำและยืนยัน</button>
-        <button style="background:gray" onclick="history.back()">ย้อนกลับ</button>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Checkout - SITMATE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="how-to-page checkout-page">
+    <div class="iphone-container">
+        
+        <div class="top-section">
+            <div class="top-section-inner">
+                <nav class="navbar">
+                    <img src="logo_small.jpg" alt="Logo" class="logo-small">
+                    <div class="nav-links">
+                        <a href="#">Home</a> <a href="#">About</a> <a href="#">Blog</a> <a href="#">Collection</a>
+                    </div>
+                </nav>
+                <header class="main-header">
+                    <img src="logo.png" alt="SITMATE Large Logo" class="logo-large">
+                </header>
+            </div>
+
+            <div class="checkout-progress">
+                <div class="checkout-step active">
+                    <div class="checkout-step-label">Select Pickup and<br>Return Location</div>
+                    <div class="checkout-step-dot"></div>
+                </div>
+                <div class="checkout-step">
+                    <div class="checkout-step-label">Select Payment<br>Method</div>
+                    <div class="checkout-step-dot"></div>
+                </div>
+                <div class="checkout-step">
+                    <div class="checkout-step-label">Pay</div>
+                    <div class="checkout-step-dot"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="checkout-content">
+            <div class="glass-box items-section">
+                <h2 class="box-title">Items</h2>
+                <div class="item-card">
+                    <img src="index_pic_01.png" alt="Product" class="item-img">
+                    
+                    <div class="item-details">
+                        <h3 class="product-id">ST - 00126</h3>
+                        <p class="price-green">40 THB</p>
+                        <p class="price-label">Subtotal</p>
+                        <p class="price-green">400 THB</p>
+                        <p class="price-label">Security Deposit</p>
+                    </div>
+
+                    <div class="item-action">
+                        <span class="add-more-text">Add more</span>
+                        <div class="scan-icon">-</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-box total-section">
+                <h2 class="box-title">Total Price</h2>
+                <div class="input-group">
+                    <input type="text" class="date-input" readonly>
+                    <div class="to-text">To</div>
+                    <input type="text" class="date-input" readonly>
+                </div>
+            </div>
+
+            <div class="checkout-button-wrapper">
+                <a href="payment.html" class="btn-orange continue-btn" style="text-decoration: none; display: inline-block; text-align: center;">Continue</a>
+            </div>
+        </div>
+
     </div>
 </body>
 </html>
