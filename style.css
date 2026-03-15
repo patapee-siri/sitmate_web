@@ -77,13 +77,22 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
 .main-header { text-align: center; margin-top: 20px; }
 
 /* ---- แก้ไขขนาดโลโก้ตรงนี้ ---- */
-.logo-large { height: 45px; } /* ลดขนาดโลโก้หลักลง 25% (จากเดิม 60px) */
+.logo-large { height: 40px; } /* ลดขนาดโลโก้หลักลง 25% (จากเดิม 60px) */
 /* ------------------------ */
 
-.main-header h1 { color: #C28329; margin-top: 10px; font-size: 36px; }
+
+/* ---- แก้ไขขนาดและตำแหน่งคำว่า How to Use ตรงนี้ ---- */
+.main-header h1 { 
+    color: #C28329; 
+    font-size: 28px;       /* ลดขนาดลงประมาณ 20% (จากเดิม 36px) */
+    margin-top: 45px;      /* ดันให้ห่างจากโลโก้ด้านบนมากขึ้น */
+    margin-bottom: -15px;   /* ดึงให้ข้อความลงมาเกือบติดเส้นขอบล่าง */
+}
+/* ------------------------------------------- */
+
 
 .steps-container { padding: 20px; display: flex; flex-direction: column; gap: 40px; }
-.step-card { display: flex; align-items: center; gap: 20px; width: 100%; }
+.step-card { display: flex; align-items: center; gap: 20px; width: 100%; } /* นำบรรทัดนี้กลับมาเพื่อให้การเรียงสลับซ้าย-ขวาสมบูรณ์ */
 .step-card.left { justify-content: flex-start; }
 .step-card.right { justify-content: flex-end; }
 
@@ -91,3 +100,31 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
 .step-card img { width: 100%; border-radius: 10px; }
 .step-label { font-weight: bold; margin-top: 15px; text-align: center; color: #C28329; font-size: 18px; line-height: 1.3; }
 .step-number { font-size: 5rem; font-weight: bold; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+
+/* =========================================================
+   7. Track Status Page Specific
+   ========================================================= */
+.track-page .iphone-container { 
+    height: 100vh; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+}
+
+/* ซ่อน Scrollbar ด้านข้างให้ดูเนียนเหมือนแอป */
+.track-page .iphone-container::-webkit-scrollbar { 
+    display: none; 
+}
+
+/* ตั้งค่าให้ Timeline อยู่เหนือ Glass panel และเว้นขอบสวยงาม */
+.timeline-container {
+    width: 100%;
+    position: relative;
+    z-index: 1; /* ดันเนื้อหาให้อยู่เหนือกระจกพื้นหลัง */
+    padding-bottom: 20px;
+}
+
+/* ปรับให้กรอบกระจกหน้า Track สัมพันธ์กับการเลื่อนหน้าจอ */
+.glass-panel-track { 
+    height: calc(100% - 150px); 
+    min-height: 500px;
+}
