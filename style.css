@@ -5,10 +5,6 @@ body, html { margin: 0; padding: 0; width: 100%; height: 100%; font-family: -app
 body { background: url('background01.png') center 0/cover no-repeat; display: flex; justify-content: center; align-items: center; }
 .iphone-container { width: 100%; max-width: 414px; height: 100vh; display: flex; flex-direction: column; align-items: center; position: relative; box-sizing: border-box; }
 
-/* เฉพาะหน้า How To ให้เลื่อน Scroll ได้ */
-.how-to-page { overflow-y: auto; background-color: #f9f9f9; color: #C28329; display: block; }
-.how-to-page .iphone-container { width: 100%; height: auto; max-width: none; align-items: stretch; }
-
 /* =========================================================
    2. เลเยอร์พื้นหลัง (Glass Panels)
    ========================================================= */
@@ -57,8 +53,19 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
 .date-orange { font-weight: bold; color: #d89647; margin-bottom: 20px; text-align: center; padding-top: 5px; font-size: 16px; }
 
 /* =========================================================
-   6. How to Use Page Specific
+   6. How to Use Page Specific (แก้ให้พอดี iPhone 11)
    ========================================================= */
+.how-to-page { color: #C28329; }
+.how-to-page .iphone-container { 
+    height: 100vh; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    align-items: stretch; 
+    background-color: transparent; 
+}
+/* ซ่อน Scrollbar ของเบราว์เซอร์เพื่อให้ดูเป็นแอปมือถือมากขึ้น */
+.how-to-page .iphone-container::-webkit-scrollbar { display: none; }
+
 .top-section { background: white; padding: 20px; border-bottom: 2px solid #C28329; }
 .navbar { display: flex; justify-content: space-between; align-items: center; }
 .logo-small { height: 30px; }
