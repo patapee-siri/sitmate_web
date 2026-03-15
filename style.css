@@ -27,15 +27,57 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
    4. Timeline Layout
    ========================================================= */
 .timeline { position: relative; width: 100%; margin-top: 10px; }
-.timeline::before { content: ''; position: absolute; left: calc(50% - 20px); top: 0; bottom: 0; width: 3px; background: #d89647; z-index: 0; }
 
-.step { display: flex; align-items: center; width: 100%; margin-bottom: 20px; position: relative; }
-.step::after { content: ''; position: absolute; left: calc(50% - 18px); width: 12px; height: 12px; background: white; border: 3px solid #d89647; border-radius: 50%; transform: translateX(-50%); z-index: 1; }
+/* จัดเส้นให้อยู่ที่สัดส่วน 35% ของหน้าจอ */
+.timeline::before { 
+    content: ''; 
+    position: absolute; 
+    left: 35%; 
+    top: 0; 
+    bottom: 0; 
+    width: 3px; 
+    background: #d89647; 
+    z-index: 0; 
+}
+
+/* เพิ่มระยะห่างระหว่างแต่ละข้อ (margin-bottom) ให้โปร่งขึ้นนิดนึงเหมือนในรูป */
+.step { display: flex; align-items: center; width: 100%; margin-bottom: 25px; position: relative; }
+
+/* จุดวงกลม ให้วางที่ 35% เช่นเดียวกับเส้น และขยายขนาดจุดขึ้นเล็กน้อยให้ชัดขึ้น */
+.step::after { 
+    content: ''; 
+    position: absolute; 
+    left: 35%; 
+    width: 14px; 
+    height: 14px; 
+    background: white; 
+    border: 3px solid #d89647; 
+    border-radius: 50%; 
+    transform: translateX(-50%); 
+    z-index: 1; 
+}
 .step.completed::after { background: #d89647 !important; border-color: #d89647 !important; }
 
-.time, .label { width: 50%; font-size: 16px; white-space: nowrap; }
-.time { text-align: right; padding-right: 40px; }
-.label { text-align: left; padding-left: 3px; color: #81796D; }
+/* กล่องเวลา: กว้าง 35% และดันขวาให้ห่างจากเส้น 20px */
+.time { 
+    width: 35%; 
+    text-align: right; 
+    padding-right: 20px; 
+    font-size: 16px; 
+    white-space: nowrap; 
+    box-sizing: border-box;
+}
+
+/* กล่องข้อความ: กว้าง 65% และดันซ้ายให้ห่างจากเส้น 20px */
+.label { 
+    width: 65%; 
+    text-align: left; 
+    padding-left: 20px; 
+    color: #81796D; 
+    font-size: 16px; 
+    white-space: nowrap; 
+    box-sizing: border-box;
+}
 .step:nth-child(n+4) .label { color: #938f8f !important; }
 
 /* =========================================================
@@ -104,27 +146,28 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
 /* =========================================================
    7. Track Status Page Specific
    ========================================================= */
-.track-page .iphone-container { 
-    height: 100vh; 
-    overflow-y: auto; 
-    overflow-x: hidden; 
-}
-
-/* ซ่อน Scrollbar ด้านข้างให้ดูเนียนเหมือนแอป */
-.track-page .iphone-container::-webkit-scrollbar { 
-    display: none; 
-}
-
-/* ตั้งค่าให้ Timeline อยู่เหนือ Glass panel และเว้นขอบสวยงาม */
-.timeline-container {
+/* จัดกลุ่มปุ่มหน้า Track ให้อยู่แถวเดียวกัน เว้นระยะ และดันลงล่างสุด */
+.track-page .track-buttons {
+    margin-top: auto;      /* ดันกลุ่มปุ่มทั้งหมดลงไปล่างสุดของหน้าจอ */
+    padding-bottom: 40px;  /* เว้นระยะจากขอบล่างนิดหน่อยให้ดูสมดุล */
+    display: flex;         /* จัดให้อยู่ในแนวนอน */
+    justify-content: center; /* ให้อยู่ตรงกลางจอ */
+    gap: 15px;             /* ระยะห่างระหว่างปุ่ม (ปรับเพิ่มลดได้) */
     width: 100%;
-    position: relative;
-    z-index: 1; /* ดันเนื้อหาให้อยู่เหนือกระจกพื้นหลัง */
-    padding-bottom: 20px;
+    z-index: 1;
 }
 
-/* ปรับให้กรอบกระจกหน้า Track สัมพันธ์กับการเลื่อนหน้าจอ */
-.glass-panel-track { 
-    height: calc(100% - 150px); 
-    min-height: 500px;
+/* ปรับขนาดปุ่มทั้งสองให้สมดุลกันในหน้าจอขนาดเล็ก */
+.track-buttons .btn-orange-compact {
+    padding: 12px 15px;
+    font-size: 16px;
+    flex: 1;               /* ให้ปุ่มยืดออกเท่าๆ กัน */
+    max-width: 165px;      /* จำกัดไม่ให้ปุ่มใหญ่เกินไป */
+}
+
+/* ทำให้ปุ่ม Back เป็นแบบโปร่ง (Outline) จะได้ไม่แย่งความเด่นกับปุ่มหลัก */
+.track-buttons .btn-back {
+    background-color: white;
+    color: #d89647;
+    border: 2px solid #d89647;
 }
