@@ -1,0 +1,269 @@
+/*=========================================================
+/*=========================================================
+/*=========================================================
+
+/* =========================================================
+   1. โครงสร้างและรีเซ็ตพื้นฐาน (Reset & Basic)
+   ========================================================= */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow: hidden;
+}
+
+body {
+    background-image: url('background01.png');
+    background-size: cover;
+    background-position: center 0px; 
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =========================================================
+   2. คอนเทนเนอร์หลักสำหรับ iPhone 11
+   ========================================================= */
+.iphone-container {
+    width: 100%;
+    max-width: 414px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top);
+}
+
+/* =========================================================
+   3. แผ่นพื้นหลังสีขาวทึบแสง (Solid Panel) - เลื่อนลง 50px
+   ========================================================= */
+.glass-panel-index {
+    position: absolute;
+    top: 150px; /* เดิม 100px + เลื่อนลง 50px */
+    left: 0;
+    width: 100%;
+    height: 455px; 
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* =========================================================
+   4. จัดการเลเยอร์เนื้อหา (Content Layers)
+   ========================================================= */
+.logo-section, .product-id-section, .product-pic-section, .button-section {
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================================
+   5. ส่วนโลโก้ (Logo - คงที่)
+   ========================================================= */
+.logo-section {
+    width: 100%;
+    text-align: center;
+    padding: 40px 0 10px 0;
+}
+.logo-section img {
+    height: 50px;
+    width: auto;
+}
+
+/* =========================================================
+   6. ส่วนแสดงรหัสสินค้า (Product ID - เลื่อนลง 50px)
+   ========================================================= */
+.product-id-section {
+    width: 100%;
+    text-align: center;
+    padding: 70px 0 5px 0; /* เดิม 25px + เลื่อนลง 50px */
+    color: #81796D; 
+}
+.product-id-section p {
+    margin: 5px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #81796D;
+    position: relative;
+    display: inline-block;
+}
+.product-id-section h1 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: bold;
+    color: #81796D;
+}
+
+/* ย้ายจุดแดงไปข้างหลัง Product ID */
+.red-dot {
+    position: absolute;
+    right: -20px; /* ปรับตำแหน่งจุดแดงให้ไปอยู่หลังข้อความ */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: #ff3b30;
+    border-radius: 50%;
+}
+
+/* =========================================================
+   7. ส่วนรูปสินค้า (Product Image - ขยับขึ้น 15px และไปทางซ้าย 5px)
+   ========================================================= */
+.product-pic-section {
+    width: 100%;
+    text-align: center;
+    /* เราคง padding ไว้เท่าเดิมเพื่อรักษาพื้นที่ทั้งหมดของหน้าจอ */
+    padding: 40px 0 10px 0; 
+}
+
+.product-pic-section img {
+    width: 100%;
+    max-width: 310px; 
+    height: auto;
+    filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.2));
+    
+    /* ขยายรูป */
+    transform: scale(1.3); 
+    
+    /* ปรับแต่งตำแหน่ง */
+    position: relative;
+    left: -5px;      /* ขยับซ้าย 5px ตามที่คุณตั้งค่าไว้ */
+    margin-top: 0px; /* จากเดิม 15px เปลี่ยนเป็น 0 เพื่อขยับขึ้น 15px */
+    margin-bottom: 15px;
+}
+
+/* =========================================================
+   8. ส่วนปุ่มกด 3 ปุ่ม (Buttons - เลื่อนลง 50px)
+   ========================================================= */
+.button-section {
+    position: absolute;
+    bottom: calc(23% - 70px); /* เลื่อนจากเดิมลงไปอีก 50px */
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.btn-orange {
+    flex: 1;
+    padding: 16px 5px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 14px;
+    background-color: #d89647;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease;
+}
+
+.btn-orange:active {
+    transform: scale(0.95);
+}
+
+/* =========================================================
+   Timeline Layout - แก้ไขระยะห่างและสีข้อความ
+   ========================================================= */
+/* วันที่ - สีส้มตัวหนา */
+.date-orange {
+    font-weight: bold;
+    color: #d89647;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-top: 5px;
+    font-size: 16px;
+}
+
+/* Timeline แกนหลัก - ขยับไปทางซ้าย 3px */
+.timeline { 
+    position: relative; 
+    width: 100%; 
+    margin-top: 10px; 
+}
+
+.timeline::before {
+    content: ''; 
+    position: absolute; 
+    left: calc(50% - 20px); /* ขยับเส้นออกจาก center ไปทางซ้าย 3px */
+    top: 0; 
+    bottom: 0;
+    width: 3px; 
+    background: #d89647; 
+    z-index: 0;
+}
+
+/* จุดวงกลมบนเส้น */
+.step { 
+    display: flex; align-items: center; width: 100%; 
+    margin-bottom: 20px; position: relative; 
+}
+
+.step::after {
+    content: ''; 
+    position: absolute; 
+    left: calc(50% - 18px); /* วงกลมขยับตามเส้นไปทางซ้าย 3px */
+    width: 12px; height: 12px;
+    background: white; border: 3px solid #d89647; border-radius: 50%;
+    transform: translateX(-50%); z-index: 1;
+}
+
+.step.completed::after { background: #d89647 !important; border-color: #d89647 !important; }
+
+/* การจัดระยะห่างข้อความ */
+.time { 
+    width: 50%; text-align: right; 
+    padding-right: 40px; 
+    font-size: 16px; white-space: nowrap; 
+}
+
+.label { 
+    width: 50%; text-align: left; 
+    padding-left: 3px; 
+    font-size: 16px; white-space: nowrap; color: #81796D; 
+}
+
+/* สีเฉพาะรายการ */
+.step:nth-child(4) .label,
+.step:nth-child(5) .label,
+.step:nth-child(6) .label {
+    color: #938f8f !important;
+}
+
+/* ปุ่มและส่วนประกอบอื่นๆ */
+.button-wrapper {
+    width: 100%; display: flex; justify-content: center;
+    margin-top: 30px; z-index: 1; position: relative;
+}
+.btn-orange-compact {
+    padding: 12px 24px; border: none; border-radius: 20px;
+    background-color: #d89647; color: white; font-weight: bold;
+    font-size: 14px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    white-space: nowrap;
+}
+.glass-panel-track {
+    position: absolute; top: 150px; left: 0; width: 100%;
+    height: calc(100vh - 150px); background: rgba(255, 255, 255, 0.85);
+    z-index: 0; pointer-events: none;
+}
+.green-dot {
+    display: inline-block; width: 10px; height: 10px;
+    background-color: #28a745; border-radius: 50%;
+    margin-left: 8px; vertical-align: middle;
+}
+.orange-text { color: #d89647 !important; }
+.active-text { font-weight: bold !important; }

@@ -1,257 +1,78 @@
-/*=========================================================
-/*=========================================================
-/*=========================================================
+/* =========================================================
+   1. โครงสร้างพื้นฐาน (Reset & Container)
+   ========================================================= */
+body, html { margin: 0; padding: 0; width: 100%; height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; overflow: hidden; }
+body { background: url('background01.png') center 0/cover no-repeat; display: flex; justify-content: center; align-items: center; }
+.iphone-container { width: 100%; max-width: 414px; height: 100vh; display: flex; flex-direction: column; align-items: center; position: relative; box-sizing: border-box; }
+
+/* เฉพาะหน้า How To ให้เลื่อน Scroll ได้ */
+.how-to-page { overflow-y: auto; background-color: #f9f9f9; color: #C28329; display: block; }
+.how-to-page .iphone-container { width: 100%; height: auto; max-width: none; align-items: stretch; }
 
 /* =========================================================
-   1. โครงสร้างและรีเซ็ตพื้นฐาน (Reset & Basic)
+   2. เลเยอร์พื้นหลัง (Glass Panels)
    ========================================================= */
-body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    overflow: hidden;
-}
-
-body {
-    background-image: url('background01.png');
-    background-size: cover;
-    background-position: center 0px; 
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+.glass-panel-index, .glass-panel-track { position: absolute; top: 150px; left: 0; width: 100%; height: 455px; background: rgba(255, 255, 255, 0.85); z-index: 0; }
+.glass-panel-track { height: calc(100vh - 150px); pointer-events: none; }
 
 /* =========================================================
-   2. คอนเทนเนอร์หลักสำหรับ iPhone 11
+   3. ส่วนโลโก้และข้อมูลสินค้า
    ========================================================= */
-.iphone-container {
-    width: 100%;
-    max-width: 414px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
-    box-sizing: border-box;
-    padding-top: env(safe-area-inset-top);
-}
+.logo-section { width: 100%; text-align: center; padding: 40px 0 10px; z-index: 1; }
+.logo-section img { height: 50px; }
+.product-id-section { width: 100%; text-align: center; padding: 70px 0 5px; color: #81796D; z-index: 1; }
+.product-id-section h1 { margin: 0; font-size: 36px; font-weight: bold; }
+.red-dot { position: absolute; right: -20px; top: 50%; width: 10px; height: 10px; background: #ff3b30; border-radius: 50%; transform: translateY(-50%); }
+
+.product-pic-section { width: 100%; text-align: center; padding: 40px 0 10px; z-index: 1; }
+.product-pic-section img { width: 100%; max-width: 310px; transform: scale(1.3); position: relative; left: -5px; margin-bottom: 15px; }
 
 /* =========================================================
-   3. แผ่นพื้นหลังสีขาวทึบแสง (Solid Panel) - เลื่อนลง 50px
+   4. Timeline Layout
    ========================================================= */
-.glass-panel {
-    position: absolute;
-    top: 150px; /* เดิม 100px + เลื่อนลง 50px */
-    left: 0;
-    width: 100%;
-    height: 455px; 
-    background: rgba(255, 255, 255, 0.85); 
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    z-index: 0;
-    pointer-events: none;
-}
+.timeline { position: relative; width: 100%; margin-top: 10px; }
+.timeline::before { content: ''; position: absolute; left: calc(50% - 20px); top: 0; bottom: 0; width: 3px; background: #d89647; z-index: 0; }
 
-/* =========================================================
-   4. จัดการเลเยอร์เนื้อหา (Content Layers)
-   ========================================================= */
-.logo-section, .product-id-section, .product-pic-section, .button-section {
-    position: relative;
-    z-index: 1;
-}
-
-/* =========================================================
-   5. ส่วนโลโก้ (Logo - คงที่)
-   ========================================================= */
-.logo-section {
-    width: 100%;
-    text-align: center;
-    padding: 40px 0 10px 0;
-}
-.logo-section img {
-    height: 50px;
-    width: auto;
-}
-
-/* =========================================================
-   6. ส่วนแสดงรหัสสินค้า (Product ID - เลื่อนลง 50px)
-   ========================================================= */
-.product-id-section {
-    width: 100%;
-    text-align: center;
-    padding: 70px 0 5px 0; /* เดิม 25px + เลื่อนลง 50px */
-    color: #81796D; 
-}
-.product-id-section p {
-    margin: 5px 0;
-    font-size: 16px;
-    font-weight: bold;
-    color: #81796D;
-    position: relative;
-    display: inline-block;
-}
-.product-id-section h1 {
-    margin: 0;
-    font-size: 36px;
-    font-weight: bold;
-    color: #81796D;
-}
-
-/* ย้ายจุดแดงไปข้างหลัง Product ID */
-.red-dot {
-    position: absolute;
-    right: -20px; /* ปรับตำแหน่งจุดแดงให้ไปอยู่หลังข้อความ */
-    top: 50%;
-    transform: translateY(-50%);
-    width: 10px;
-    height: 10px;
-    background-color: #ff3b30;
-    border-radius: 50%;
-}
-
-/* =========================================================
-   7. ส่วนรูปสินค้า (Product Image - ขยับขึ้น 15px และไปทางซ้าย 5px)
-   ========================================================= */
-.product-pic-section {
-    width: 100%;
-    text-align: center;
-    /* เราคง padding ไว้เท่าเดิมเพื่อรักษาพื้นที่ทั้งหมดของหน้าจอ */
-    padding: 40px 0 10px 0; 
-}
-
-.product-pic-section img {
-    width: 100%;
-    max-width: 310px; 
-    height: auto;
-    filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.2));
-    
-    /* ขยายรูป */
-    transform: scale(1.3); 
-    
-    /* ปรับแต่งตำแหน่ง */
-    position: relative;
-    left: -5px;      /* ขยับซ้าย 5px ตามที่คุณตั้งค่าไว้ */
-    margin-top: 0px; /* จากเดิม 15px เปลี่ยนเป็น 0 เพื่อขยับขึ้น 15px */
-    margin-bottom: 15px;
-}
-
-/* =========================================================
-   8. ส่วนปุ่มกด 3 ปุ่ม (Buttons - เลื่อนลง 50px)
-   ========================================================= */
-.button-section {
-    position: absolute;
-    bottom: calc(23% - 70px); /* เลื่อนจากเดิมลงไปอีก 50px */
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-}
-
-.btn-orange {
-    flex: 1;
-    padding: 16px 5px;
-    font-size: 14px;
-    font-weight: bold;
-    border: none;
-    border-radius: 14px;
-    background-color: #d89647;
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    text-align: center;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.1s ease;
-}
-
-.btn-orange:active {
-    transform: scale(0.95);
-}
-
-/* =========================================================
-   Timeline Layout - เส้นตรงกลาง แยกเวลาซ้าย ข้อความขวา
-   ========================================================= */
-/* การจัดวางปุ่มให้กึ่งกลางและขนาดพอดี */
-.button-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 40px; /* ระยะห่างจากส่วนตูดของ Timeline */
-    z-index: 1;
-    position: relative;
-}
-
-.btn-orange-compact {
-    padding: 12px 24px; /* ปรับให้พอดีกับข้อความ */
-    border: none;
-    border-radius: 20px;
-    background-color: #d89647;
-    color: white;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    white-space: nowrap; /* ป้องกันข้อความขึ้นบรรทัดใหม่ */
-}
-
-/* พื้นหลังแผ่นสีขาว - ให้ยาวถึงล่าง */
-.glass-panel {
-    position: absolute; 
-    top: 150px; 
-    left: 0; 
-    width: 100%;
-    height: calc(100vh - 150px); 
-    background: rgba(255, 255, 255, 0.85);
-    z-index: 0; 
-    pointer-events: none;
-}
-
-/* Product ID - จุดเขียว */
-.green-dot {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background-color: #28a745;
-    border-radius: 50%;
-    margin-left: 8px;
-    vertical-align: middle;
-}
-
-/* วันที่ - สีส้มตัวหนา */
-.date-orange {
-    font-weight: bold;
-    color: #d89647;
-    margin-bottom: 20px;
-    text-align: center;
-    padding-top: 5px;
-}
-
-/* Timeline สีส้ม */
-.orange-text { color: #d89647 !important; }
-.active-text { font-weight: bold !important; }
-
-.timeline { position: relative; width: 100%; margin-top: 20px; }
-.timeline::before {
-    content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
-    width: 3px; background: #d89647; transform: translateX(-50%); z-index: 0;
-}
-
-.step { display: flex; align-items: center; width: 100%; margin-bottom: 30px; position: relative; }
-.step::after {
-    content: ''; position: absolute; left: 50%; width: 12px; height: 12px;
-    background: white; border: 3px solid #d89647; border-radius: 50%;
-    transform: translateX(-50%); z-index: 1;
-}
-
+.step { display: flex; align-items: center; width: 100%; margin-bottom: 20px; position: relative; }
+.step::after { content: ''; position: absolute; left: calc(50% - 18px); width: 12px; height: 12px; background: white; border: 3px solid #d89647; border-radius: 50%; transform: translateX(-50%); z-index: 1; }
 .step.completed::after { background: #d89647 !important; border-color: #d89647 !important; }
 
-.time { width: 50%; text-align: right; padding-right: 15px; font-size: 14px; }
-.label { width: 50%; text-align: left; padding-left: 15px; font-size: 14px; }
+.time, .label { width: 50%; font-size: 16px; white-space: nowrap; }
+.time { text-align: right; padding-right: 40px; }
+.label { text-align: left; padding-left: 3px; color: #81796D; }
+.step:nth-child(n+4) .label { color: #938f8f !important; }
+
+/* =========================================================
+   5. ปุ่มกดและสไตล์เสริม
+   ========================================================= */
+.button-section { position: absolute; bottom: calc(23% - 70px); width: 90%; display: flex; gap: 12px; z-index: 1; }
+.btn-orange, .btn-orange-compact { font-weight: bold; border: none; border-radius: 14px; background: #d89647; color: white; cursor: pointer; display: flex; justify-content: center; align-items: center; }
+.btn-orange { flex: 1; padding: 16px 5px; }
+.button-wrapper { width: 100%; display: flex; justify-content: center; margin-top: 30px; margin-bottom: 40px; z-index: 1; position: relative; }
+.btn-orange-compact { padding: 12px 24px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+
+.green-dot { display: inline-block; width: 10px; height: 10px; background: #28a745; border-radius: 50%; margin-left: 8px; }
+.orange-text { color: #d89647 !important; }
+.active-text { font-weight: bold !important; }
+.date-orange { font-weight: bold; color: #d89647; margin-bottom: 20px; text-align: center; padding-top: 5px; font-size: 16px; }
+
+/* =========================================================
+   6. How to Use Page Specific
+   ========================================================= */
+.top-section { background: white; padding: 20px; border-bottom: 2px solid #C28329; }
+.navbar { display: flex; justify-content: space-between; align-items: center; }
+.logo-small { height: 30px; }
+.nav-links a { color: #C28329; margin-left: 10px; text-decoration: none; font-size: 0.9rem; }
+.main-header { text-align: center; margin-top: 20px; }
+.logo-large { height: 50px; }
+.main-header h1 { color: #C28329; margin-top: 10px; }
+
+.steps-container { padding: 20px; display: flex; flex-direction: column; gap: 40px; }
+.step-card { display: flex; align-items: center; gap: 20px; width: 100%; }
+.step-card.left { justify-content: flex-start; }
+.step-card.right { justify-content: flex-end; }
+
+.step-content { display: flex; flex-direction: column; align-items: center; width: 55%; background: white; padding: 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+.step-card img { width: 100%; border-radius: 10px; }
+.step-label { font-weight: bold; margin-top: 10px; text-align: center; color: #C28329; }
+.step-number { font-size: 4rem; font-weight: bold; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
