@@ -5,20 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Checkout - SITMATE</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* เพิ่มสไตล์นิดหน่อยให้ Dropdown ดูสวยงามเข้ากับกล่องเดิม */
+        .select-station {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            background-color: #f9f9f9;
+            color: #333;
+            appearance: none; /* เอาลูกศรแบบเก่าออกให้ดูโมเดิร์นขึ้น (ถ้าต้องการ) */
+        }
+    </style>
 </head>
-<body class="how-to-page checkout-page">
+<body class="how-to-page checkout-page" style="margin: 0; padding: 0;">
     <div class="iphone-container">
         
-        <div class="top-section">
-            <div class="top-section-inner">
-                <nav class="navbar">
-                    <img src="logo_small.jpg" alt="Logo" class="logo-small">
-                    <div class="nav-links">
-                        <a href="#">Home</a> <a href="#">About</a> <a href="#">Blog</a> <a href="#">Collection</a>
+        <div class="top-section" style="width: 100%;">
+            <div class="top-section-inner" style="width: 100%;">
+                <nav class="navbar" style="display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; box-sizing: border-box !important; padding: 20px 40px 0 10px !important;">
+                    <img src="logo_small.jpg" alt="Logo" class="logo-small" style="margin: 0; display: block;">
+                    <div class="nav-links" style="display: flex !important; gap: 10px !important; margin: 0; padding: 0;">
+                        <a href="#" style="text-decoration: none;">Home</a> 
+                        <a href="#" style="text-decoration: none;">About</a> 
+                        <a href="#" style="text-decoration: none;">Blog</a> 
+                        <a href="#" style="text-decoration: none;">Collection</a>
                     </div>
                 </nav>
-                <header class="main-header">
-                    <img src="logo.png" alt="SITMATE Large Logo" class="logo-large">
+
+                <header class="main-header" style="margin-top: 40px !important; width: 100%; display: flex; justify-content: center; align-items: center; margin-left: -25px;">
+                    <img src="logo.png" alt="SITMATE Large Logo" class="logo-large" style="display: block; margin: 0 auto;">
                 </header>
             </div>
 
@@ -52,24 +69,52 @@
                         <p class="price-label">Security Deposit</p>
                     </div>
 
-                        <div class="item-action">
-                            <span class="add-more-text">Add more</span>
-                            <img src="scan.png" alt="Scan" class="scan-btn" width="38" height="38">
-                        </div>
+                    <div class="item-action">
+                        <span class="add-more-text">Add more</span>
+                        <img src="scan.png" alt="Scan" class="scan-btn" width="38" height="38">
+                    </div>
                 </div>
             </div>
 
             <div class="glass-box total-section">
                 <h2 class="box-title">Choose Pickup & Return Point</h2>
-                <div class="input-group">
-                    <input type="text" class="date-input" readonly>
+                <div class="input-group" style="display: flex; align-items: center; gap: 10px; width: 100%;">
+                    
+                    <select class="date-input select-station" style="flex: 1;">
+                        <option value="" disabled selected>Pickup Station</option>
+                        <option value="krung_thep_aphiwat">สถานีกลางกรุงเทพอภิวัฒน์</option>
+                        <option value="hua_lamphong">กรุงเทพ (หัวลำโพง)</option>
+                        <option value="chiang_mai">เชียงใหม่</option>
+                        <option value="nong_khai">หนองคาย</option>
+                        <option value="khon_kaen">ขอนแก่น</option>
+                        <option value="udon_thani">อุดรธานี</option>
+                        <option value="surat_thani">สุราษฎร์ธานี</option>
+                        <option value="hat_yai">ชุมทางหาดใหญ่</option>
+                        <option value="hua_hin">หัวหิน</option>
+                        <option value="chumphon">ชุมพร</option>
+                    </select>
+                    
                     <div class="to-text">To</div>
-                    <input type="text" class="date-input" readonly>
+                    
+                    <select class="date-input select-station" style="flex: 1;">
+                        <option value="" disabled selected>Return Station</option>
+                        <option value="krung_thep_aphiwat">สถานีกลางกรุงเทพอภิวัฒน์</option>
+                        <option value="hua_lamphong">กรุงเทพ (หัวลำโพง)</option>
+                        <option value="chiang_mai">เชียงใหม่</option>
+                        <option value="nong_khai">หนองคาย</option>
+                        <option value="khon_kaen">ขอนแก่น</option>
+                        <option value="udon_thani">อุดรธานี</option>
+                        <option value="surat_thani">สุราษฎร์ธานี</option>
+                        <option value="hat_yai">ชุมทางหาดใหญ่</option>
+                        <option value="hua_hin">หัวหิน</option>
+                        <option value="chumphon">ชุมพร</option>
+                    </select>
+                    
                 </div>
             </div>
 
             <div class="checkout-button-wrapper">
-                <a href="payment.html" class="btn-orange continue-btn" style="text-decoration: none; display: inline-block; text-align: center;">Continue</a>
+                <button class="btn-orange continue-btn">Continue</button>
             </div>
         </div>
 

@@ -2,69 +2,40 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Checkout - SITMATE</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* สไตล์สำหรับ Dropdown ปรับให้รองรับ Safari/iOS */
+        /* เพิ่มสไตล์นิดหน่อยให้ Dropdown ดูสวยงามเข้ากับกล่องเดิม */
         .select-station {
             width: 100%;
-            padding: 12px 10px; /* เพิ่มพื้นที่กดให้ง่ายขึ้นบนมือถือ */
-            border: 1px solid #ddd;
+            padding: 10px;
+            border: 1px solid #ccc;
             border-radius: 8px;
             font-size: 14px;
-            background-color: #fff;
+            background-color: #f9f9f9;
             color: #333;
-            -webkit-appearance: none; /* สำคัญมากสำหรับ iOS Safari */
-            appearance: none;
-            background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* ใส่ลูกศรจำลองลงไปแทน */
-            background-repeat: no-repeat;
-            background-position-x: 95%;
-            background-position-y: 50%;
-            box-sizing: border-box;
-        }
-
-        /* ปรับ Layout ของ Input Group สำหรับมือถือ */
-        .responsive-input-group {
-            display: flex;
-            flex-direction: row; /* จัดเรียงแนวนอน */
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        /* ถ้าระยะแคบเกินไปในจอบางรุ่น ให้เด้งลงมาซ้อนกัน */
-        @media (max-width: 380px) {
-            .responsive-input-group {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .to-text {
-                transform: rotate(90deg); /* หมุนคำว่า To ลงมา */
-            }
+            appearance: none; /* เอาลูกศรแบบเก่าออกให้ดูโมเดิร์นขึ้น (ถ้าต้องการ) */
         }
     </style>
 </head>
-<body class="how-to-page checkout-page" style="margin: 0; padding: 0; overflow-x: hidden;">
-    <div class="iphone-container" style="width: 100%; max-width: 414px; margin: 0 auto; overflow: hidden;">
+<body class="how-to-page checkout-page" style="margin: 0; padding: 0;">
+    <div class="iphone-container">
         
         <div class="top-section" style="width: 100%;">
-            <div class="top-section-inner" style="width: 100%; padding: 0 15px; box-sizing: border-box;">
-                
-                <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding-top: 20px;">
-                    <img src="logo_small.jpg" alt="Logo" class="logo-small" style="max-height: 30px;">
-                    <div class="nav-links" style="display: flex; gap: 10px;">
-                        <a href="#" style="text-decoration: none; font-size: 14px;">Home</a> 
-                        <a href="#" style="text-decoration: none; font-size: 14px;">About</a> 
-                        <a href="#" style="text-decoration: none; font-size: 14px;">Blog</a> 
-                        <a href="#" style="text-decoration: none; font-size: 14px;">Collection</a>
+            <div class="top-section-inner" style="width: 100%;">
+                <nav class="navbar" style="display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; box-sizing: border-box !important; padding: 20px 40px 0 10px !important;">
+                    <img src="logo_small.jpg" alt="Logo" class="logo-small" style="margin: 0; display: block;">
+                    <div class="nav-links" style="display: flex !important; gap: 10px !important; margin: 0; padding: 0;">
+                        <a href="#" style="text-decoration: none;">Home</a> 
+                        <a href="#" style="text-decoration: none;">About</a> 
+                        <a href="#" style="text-decoration: none;">Blog</a> 
+                        <a href="#" style="text-decoration: none;">Collection</a>
                     </div>
                 </nav>
 
-                <header class="main-header" style="margin-top: 30px; text-align: center;">
-                    <img src="logo.png" alt="SITMATE Large Logo" class="logo-large" style="max-width: 150px; height: auto;">
+                <header class="main-header" style="margin-top: 40px !important; width: 100%; display: flex; justify-content: center; align-items: center; margin-left: -25px;">
+                    <img src="logo.png" alt="SITMATE Large Logo" class="logo-large" style="display: block; margin: 0 auto;">
                 </header>
             </div>
 
@@ -84,8 +55,7 @@
             </div>
         </div>
 
-        <div class="checkout-content" style="padding: 0 15px; box-sizing: border-box;">
-            
+        <div class="checkout-content">
             <div class="glass-box items-section">
                 <h2 class="box-title">Items</h2>
                 <div class="item-card">
@@ -108,50 +78,44 @@
 
             <div class="glass-box total-section">
                 <h2 class="box-title">Choose Pickup & Return Point</h2>
-                
-                <div class="responsive-input-group">
+                <div class="input-group" style="display: flex; align-items: center; gap: 10px; width: 100%;">
                     
-                    <div style="flex: 1; width: 100%;">
-                        <select class="select-station">
-                            <option value="" disabled selected>Pickup Station</option>
-                            <option value="krung_thep_aphiwat">สถานีกลางกรุงเทพอภิวัฒน์</option>
-                            <option value="hua_lamphong">กรุงเทพ (หัวลำโพง)</option>
-                            <option value="chiang_mai">เชียงใหม่</option>
-                            <option value="nong_khai">หนองคาย</option>
-                            <option value="khon_kaen">ขอนแก่น</option>
-                            <option value="udon_thani">อุดรธานี</option>
-                            <option value="surat_thani">สุราษฎร์ธานี</option>
-                            <option value="hat_yai">ชุมทางหาดใหญ่</option>
-                            <option value="hua_hin">หัวหิน</option>
-                            <option value="chumphon">ชุมพร</option>
-                        </select>
-                    </div>
+                    <select class="date-input select-station" style="flex: 1;">
+                        <option value="" disabled selected>Pickup Station</option>
+                        <option value="krung_thep_aphiwat">สถานีกลางกรุงเทพอภิวัฒน์</option>
+                        <option value="hua_lamphong">กรุงเทพ (หัวลำโพง)</option>
+                        <option value="chiang_mai">เชียงใหม่</option>
+                        <option value="nong_khai">หนองคาย</option>
+                        <option value="khon_kaen">ขอนแก่น</option>
+                        <option value="udon_thani">อุดรธานี</option>
+                        <option value="surat_thani">สุราษฎร์ธานี</option>
+                        <option value="hat_yai">ชุมทางหาดใหญ่</option>
+                        <option value="hua_hin">หัวหิน</option>
+                        <option value="chumphon">ชุมพร</option>
+                    </select>
                     
-                    <div class="to-text" style="font-weight: bold; color: #666;">To</div>
+                    <div class="to-text">To</div>
                     
-                    <div style="flex: 1; width: 100%;">
-                        <select class="select-station">
-                            <option value="" disabled selected>Return Station</option>
-                            <option value="krung_thep_aphiwat">สถานีกลางกรุงเทพอภิวัฒน์</option>
-                            <option value="hua_lamphong">กรุงเทพ (หัวลำโพง)</option>
-                            <option value="chiang_mai">เชียงใหม่</option>
-                            <option value="nong_khai">หนองคาย</option>
-                            <option value="khon_kaen">ขอนแก่น</option>
-                            <option value="udon_thani">อุดรธานี</option>
-                            <option value="surat_thani">สุราษฎร์ธานี</option>
-                            <option value="hat_yai">ชุมทางหาดใหญ่</option>
-                            <option value="hua_hin">หัวหิน</option>
-                            <option value="chumphon">ชุมพร</option>
-                        </select>
-                    </div>
+                    <select class="date-input select-station" style="flex: 1;">
+                        <option value="" disabled selected>Return Station</option>
+                        <option value="krung_thep_aphiwat">สถานีกลางกรุงเทพอภิวัฒน์</option>
+                        <option value="hua_lamphong">กรุงเทพ (หัวลำโพง)</option>
+                        <option value="chiang_mai">เชียงใหม่</option>
+                        <option value="nong_khai">หนองคาย</option>
+                        <option value="khon_kaen">ขอนแก่น</option>
+                        <option value="udon_thani">อุดรธานี</option>
+                        <option value="surat_thani">สุราษฎร์ธานี</option>
+                        <option value="hat_yai">ชุมทางหาดใหญ่</option>
+                        <option value="hua_hin">หัวหิน</option>
+                        <option value="chumphon">ชุมพร</option>
+                    </select>
                     
                 </div>
             </div>
 
-            <div class="checkout-button-wrapper" style="margin: 30px 0;">
-                <button class="btn-orange continue-btn" style="width: 100%;">Continue</button>
+            <div class="checkout-button-wrapper">
+                <button class="btn-orange continue-btn">Continue</button>
             </div>
-            
         </div>
 
     </div>
