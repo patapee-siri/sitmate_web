@@ -9,7 +9,7 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
 /* =========================================================
    2. เลเยอร์พื้นหลัง (Glass Panels)
    ========================================================= */
-.glass-panel-index, .glass-panel-track { position: absolute; top: 150px; left: 0; width: 100%; height: 455px; background: rgba(255, 255, 255, 0.85); z-index: 0; }
+.glass-panel-index, .glass-panel-track { position: absolute; top: 150px; left: 0; width: 100%; height: 525px; background: rgba(255, 255, 255, 0.85); z-index: 0; }
 .glass-panel-track { height: calc(100vh - 150px); pointer-events: none; }
 
 /* =========================================================
@@ -26,6 +26,7 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
 /* =========================================================
    4. Timeline Layout
    ========================================================= */
+.timeline-container { margin-top: 30px; }
 .timeline { position: relative; width: 100%; margin-top: 10px; }
 .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: #d89647; z-index: 0; transform: translateX(-50%); }
 .step { display: flex; align-items: center; width: 100%; margin-bottom: 50px; position: relative; }
@@ -230,4 +231,26 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
 /* เอฟเฟกต์ตอนกดปุ่ม */
 .index-special-button:active {
     transform: scale(0.95);
+}
+
+/* =========================================================
+   ปลดล็อคการ Scroll สำหรับหน้า Track Status
+   ========================================================= */
+body.track-page, 
+html {
+    height: auto !important;
+    min-height: 100%;
+    overflow-y: auto !important; /* บังคับให้ไถขึ้นลงได้ */
+}
+
+body.track-page .iphone-container {
+    height: auto !important;
+    min-height: 100vh; /* ให้ความสูงขั้นต่ำเต็มจอ แต่ยืดออกได้ถ้าเนื้อหาเยอะ */
+    overflow-y: auto !important;
+    padding-bottom: 40px; /* เพิ่มพื้นที่ว่างด้านล่าง กันปุ่มทับเนื้อหา */
+}
+
+/* ถ้า glass-panel ตั้งเป็น fixed หรือ absolute อาจจะบังการเลื่อน ให้ปรับยืดตามเนื้อหา */
+body.track-page .glass-panel-track {
+    min-height: 100%;
 }
