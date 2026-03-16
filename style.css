@@ -85,8 +85,40 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
 .checkout-page .iphone-container { background: url('background01.png') center/cover no-repeat; display: flex; flex-direction: column; }
 .top-section { background: white; padding: 20px 0 0 0; position: relative; z-index: 2; margin-top: 10px; }
 .top-section-inner { padding: 0 20px; }
-.checkout-progress { display: flex; justify-content: space-between; align-items: flex-end; position: relative; padding: 0 20px; margin-top: 35px; margin-bottom: -9px; overflow-x: hidden; }
-.checkout-progress::before { content: ''; position: absolute; bottom: 9px; width: 100vw; left: 50%; transform: translateX(-50%); height: 2px; background-color: #C28329; z-index: 0; }
+/* =========================================================
+   แก้ไขส่วน Progress ให้ทับเส้นขอบด้านล่างพอดีเป๊ะ
+   ========================================================= */
+
+.checkout-progress { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-end; 
+    position: relative; 
+    padding: 0 20px; 
+    margin-top: 35px; 
+    
+    /* 1. เปลี่ยน margin-bottom เป็น 0 (ของเดิม -9px) */
+    margin-bottom: -16px; 
+    
+    /* 2. ดันกล่องลงมา 9px (เนื่องจากวงกลมขนาด 18px การดันลง 9px จะทำให้กึ่งกลางวงกลมทับขอบพอดี) */
+    transform: translateY(9px); 
+    
+    /* 3. ลบ overflow-x: hidden; ออก เพื่อไม่ให้วงกลมโดนตัดขอบด้านล่าง */
+    z-index: 10; 
+}
+
+.checkout-progress::before { 
+    content: ''; 
+    position: absolute; 
+    bottom: 5px; /* ระดับความสูงให้อยู่ตรงกลางวงกลมพอดี */
+    
+    /* 4. เปลี่ยนมาใช้ left: 0 และ right: 0 เพื่อยืดเส้นให้เต็มกล่องแบบปลอดภัย ไม่ทะลุจอ */
+    left: 0;
+    right: 0;
+    height: 3px; 
+    background-color: #C28329; 
+    z-index: 0; 
+}
 .checkout-step { display: flex; flex-direction: column; align-items: center; flex: 1; z-index: 1; }
 .checkout-step-label { font-size: 11px; font-weight: bold; color: #C28329; text-align: center; margin-bottom: 10px; min-height: 28px; display: flex; align-items: flex-end; justify-content: center; }
 .checkout-step-dot { width: 18px; height: 18px; background-color: white; border: 2px solid #C28329; border-radius: 50%; box-sizing: border-box; position: relative; z-index: 2; }
