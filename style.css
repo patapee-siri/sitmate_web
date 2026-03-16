@@ -293,3 +293,14 @@ body.track-page .iphone-container {
 body.track-page .glass-panel-track {
     min-height: 100%;
 }
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.nav-links {
+    display: flex;
+    gap: 20px;
+}

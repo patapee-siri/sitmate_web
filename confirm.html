@@ -6,24 +6,33 @@
     <title>Payment Confirmed - SITMATE</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="confirm-page">
-    <div class="iphone-container" style="background: white; display: flex; flex-direction: column;">
+<body class="confirm-page" style="background-color: white; margin: 0; padding: 0;">
+    <div class="iphone-container" style="background: white; display: flex; flex-direction: column; min-height: 100vh;">
         
-        <div class="white-header-section" style="padding: 20px 20px 0 20px; background: white;">
-            <nav class="navbar">
-                <img src="logo_small.jpg" alt="Logo" class="logo-small">
-                <div class="nav-links">
-                    <a href="#">Home</a> <a href="#">About</a> <a href="#">Blog</a> <a href="#">Collection</a>
-                </div>
-            </nav>
-            <header class="main-header" style="margin-bottom: 20px;">
-                <img src="logo.png" alt="SITMATE Large Logo" class="logo-large">
-            </header>
+        <div class="top-section" style="background: white; width: 100%;">
+            <div class="top-section-inner" style="width: 100%;">
+                
+                <nav class="navbar" style="display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; box-sizing: border-box !important; padding: 20px 40px 0 10px !important;">
+                    <img src="logo_small.jpg" alt="Logo" class="logo-small" style="margin: 0; display: block;">
+                    
+                    <div class="nav-links" style="display: flex !important; gap: 10px !important; margin: 0; padding: 0;">
+                        <a href="#" style="text-decoration: none;">Home</a> 
+                        <a href="#" style="text-decoration: none;">About</a> 
+                        <a href="#" style="text-decoration: none;">Blog</a> 
+                        <a href="#" style="text-decoration: none;">Collection</a>
+                    </div>
+                </nav>
+
+                <header class="main-header" style="margin-top: 40px !important; text-align: center; display: flex; justify-content: center;">
+                    <img src="logo.png" alt="SITMATE Large Logo" class="logo-large">
+                </header>
+                
+            </div>
         </div>
 
         <div class="checkout-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; flex: 1; padding: 0 20px;">
             
-            <div class="verified-gif-container" style="width: 100%; max-width: 250px; display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+            <div class="verified-gif-container" style="width: 100%; max-width: 250px; display: flex; justify-content: center; align-items: center;">
                 <img src="okay.gif" alt="Payment Verified" style="width: 100%; height: auto; object-fit: contain;">
             </div>
 
@@ -32,15 +41,12 @@
             </div>
             
             <div class="checkout-button-wrapper" style="margin-top: auto; margin-bottom: 40px; width: 100%;">
-                <a href="index.html" class="btn-orange continue-btn" style="text-decoration: none; display: inline-block; text-align: center; width: 100%; box-sizing: border-box;">Back to Home</a>
+                <a href="index.html" class="btn-orange continue-btn" style="text-decoration: none; display: block; text-align: center; width: 100%; box-sizing: border-box;">Back to Home</a>
             </div>
-
         </div> 
     </div> 
 
-    <audio id="success-sound" autoplay>
-        <source src="ding.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="success-sound" src="ding.mp3" preload="auto"></audio>
 
 </body>
 </html>
