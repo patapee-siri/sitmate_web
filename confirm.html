@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Payment Confirmed - SITMATE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="confirm-page">
+    <div class="iphone-container" style="background: white; display: flex; flex-direction: column;">
+        
+        <div class="white-header-section" style="padding: 20px 20px 0 20px; background: white;">
+            <nav class="navbar">
+                <img src="logo_small.jpg" alt="Logo" class="logo-small">
+                <div class="nav-links">
+                    <a href="#">Home</a> <a href="#">About</a> <a href="#">Blog</a> <a href="#">Collection</a>
+                </div>
+            </nav>
+            <header class="main-header" style="margin-bottom: 20px;">
+                <img src="logo.png" alt="SITMATE Large Logo" class="logo-large">
+            </header>
+        </div>
+
+        <div class="checkout-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; flex: 1; padding: 0 20px;">
+            
+            <div class="verified-gif-container" style="width: 100%; max-width: 250px; display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+                <img src="okay.gif" alt="Payment Verified" style="width: 100%; height: auto; object-fit: contain;">
+            </div>
+
+            <div style="color: #C28329; font-size: 24px; font-weight: bold; text-align: center;">
+                Payment Successful!
+            </div>
+            
+            <div class="checkout-button-wrapper" style="margin-top: auto; margin-bottom: 40px; width: 100%;">
+                <a href="index.html" class="btn-orange continue-btn" style="text-decoration: none; display: inline-block; text-align: center; width: 100%; box-sizing: border-box;">Back to Home</a>
+            </div>
+
+        </div> 
+    </div> 
+
+    <audio id="success-sound" autoplay>
+        <source src="ding.mp3" type="audio/mpeg">
+    </audio>
+
+</body>
+</html>
