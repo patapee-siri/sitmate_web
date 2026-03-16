@@ -1,7 +1,8 @@
 /* =========================================================
    1. โครงสร้างพื้นฐาน (Reset & Container)
    ========================================================= */
-body, html { margin: 0; padding: 0; width: 100%; height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; overflow: hidden; }
+* { font-family: 'Geist', sans-serif; }
+body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
 body { background: url('background01.png') center 0/cover no-repeat; display: flex; justify-content: center; align-items: center; }
 .iphone-container { width: 100%; max-width: 414px; height: 100vh; display: flex; flex-direction: column; align-items: center; position: relative; box-sizing: border-box; }
 
@@ -18,19 +19,7 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
 .logo-section img { height: 50px; }
 .product-id-section { width: 100%; text-align: center; padding: 70px 0 5px; color: #81796D; z-index: 1; }
 .product-id-section h1 { margin: 0; font-size: 36px; font-weight: bold; }
-
-.red-dot { 
-    display: inline-block; 
-    width: 10px; 
-    height: 10px; 
-    background: #ff3b30; 
-    border-radius: 50%; 
-    margin-left: 8px; 
-    vertical-align: middle; 
-    position: relative;
-    top: -1px; 
-}
-
+.red-dot { display: inline-block; width: 10px; height: 10px; background: #ff3b30; border-radius: 50%; margin-left: 8px; vertical-align: middle; position: relative; top: -1px; }
 .product-pic-section { width: 100%; text-align: center; padding: 40px 0 10px; z-index: 1; }
 .product-pic-section img { width: 100%; max-width: 310px; transform: scale(1.3); position: relative; left: -5px; margin-bottom: 15px; }
 
@@ -38,50 +27,12 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
    4. Timeline Layout
    ========================================================= */
 .timeline { position: relative; width: 100%; margin-top: 10px; }
-.timeline::before { 
-    content: ''; 
-    position: absolute; 
-    left: 35%; 
-    top: 0; 
-    bottom: 0; 
-    width: 3px; 
-    background: #d89647; 
-    z-index: 0; 
-}
-
-.step { display: flex; align-items: center; width: 100%; margin-bottom: 25px; position: relative; }
-.step::after { 
-    content: ''; 
-    position: absolute; 
-    left: 35%; 
-    width: 14px; 
-    height: 14px; 
-    background: white; 
-    border: 3px solid #d89647; 
-    border-radius: 50%; 
-    transform: translateX(-50%); 
-    z-index: 1; 
-}
+.timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: #d89647; z-index: 0; transform: translateX(-50%); }
+.step { display: flex; align-items: center; width: 100%; margin-bottom: 50px; position: relative; }
+.step::after { content: ''; position: absolute; left: 50%; width: 14px; height: 14px; background: white; border: 3px solid #d89647; border-radius: 50%; transform: translateX(-50%); z-index: 1; }
 .step.completed::after { background: #d89647 !important; border-color: #d89647 !important; }
-
-.time { 
-    width: 35%; 
-    text-align: right; 
-    padding-right: 20px; 
-    font-size: 16px; 
-    white-space: nowrap; 
-    box-sizing: border-box;
-}
-
-.label { 
-    width: 65%; 
-    text-align: left; 
-    padding-left: 20px; 
-    color: #81796D; 
-    font-size: 16px; 
-    white-space: nowrap; 
-    box-sizing: border-box;
-}
+.time { width: 35%; text-align: right; padding-right: 10px; font-size: 14px; white-space: nowrap; box-sizing: border-box; }
+.label { width: 65%; text-align: left; padding-left: 70px; color: #81796D; font-size: 14px; white-space: nowrap; box-sizing: border-box; }
 .step:nth-child(n+4) .label { color: #938f8f !important; }
 
 /* =========================================================
@@ -89,96 +40,33 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
    ========================================================= */
 .button-section { position: absolute; bottom: calc(23% - 70px); width: 90%; display: flex; gap: 12px; z-index: 1; }
 .btn-orange, .btn-orange-compact { font-weight: bold; border: none; border-radius: 14px; background: #d89647; color: white; cursor: pointer; display: flex; justify-content: center; align-items: center; text-decoration: none; }
-.btn-orange { flex: 1; padding: 16px 5px; font-size: 16px; text-align: center; }
-.button-wrapper { width: 100%; display: flex; justify-content: center; margin-top: 30px; margin-bottom: 40px; z-index: 1; position: relative; }
+.btn-orange { width: fit-content; padding: 5px 10px; text-align: center; font-weight: bold; border-radius: 5px; background-color: #d89647; color: white; position: relative; z-index: 10; }
 .btn-orange-compact { padding: 12px 24px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-size: 18px; }
-
 .green-dot { display: inline-block; width: 10px; height: 10px; background: #28a745; border-radius: 50%; margin-left: 8px; }
 .orange-text { color: #d89647 !important; }
 .active-text { font-weight: bold !important; }
-.date-orange { font-weight: bold; color: #d89647; margin-bottom: 20px; text-align: center; padding-top: 5px; font-size: 16px; }
+.date-orange { font-weight: bold; color: #d89647; margin-bottom: 30px; text-align: left; padding-top: 5px; font-size: 14px; padding-right: 200px; }
 
 /* =========================================================
    6. How to Use Page Specific
    ========================================================= */
 .how-to-page { color: #C28329; }
-.how-to-page .iphone-container { 
-    height: 100vh; 
-    overflow-y: auto; 
-    overflow-x: hidden; 
-    align-items: stretch; 
-    background: url('background01.png') center/cover no-repeat; /* แก้ไข: โชว์พื้นหลังเหมือนรูป */
-}
+.how-to-page .iphone-container { height: 100vh; overflow-y: auto; overflow-x: hidden; align-items: stretch; background: url('background01.png') center/cover no-repeat; }
 .how-to-page .iphone-container::-webkit-scrollbar { display: none; }
-
-/* เพิ่มการจัดการกล่องสีขาวด้านบนให้คลุมแค่ How to use และมีเส้นสีส้ม */
-.how-to-page .top-section { 
-    background: white; 
-    padding: 20px 0 15px 0; 
-    border-bottom: 4px solid #C28329; 
-    position: relative; 
-    z-index: 2; 
-    width: 100%;
-}
-
-.navbar { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    margin-top: -5px; 
-}
-
+.how-to-page .top-section { background: white; padding: 20px 0 15px 0; border-bottom: 4px solid #C28329; position: relative; z-index: 2; width: 100%; }
+.navbar { display: flex; justify-content: space-between; align-items: center; margin-top: -5px; }
 .logo-small { height: 26px; } 
-
-.nav-links a { 
-    color: #C28329; 
-    margin-left: 10px; 
-    text-decoration: none; 
-    font-size: 13px;       
-    font-weight: normal;   
-}
-
+.nav-links a { color: #C28329; margin-left: 10px; text-decoration: none; font-size: 13px; font-weight: normal; }
 .main-header { text-align: center; margin-top: 20px; }
 .logo-large { height: 40px; }
-
-.main-header h1 { 
-    color: #C28329; 
-    font-size: 28px; 
-    margin-top: 45px; 
-    margin-bottom: 5px; /* ปรับลดพื้นที่ด้านล่างเพื่อให้ขอบเส้นส้มอยู่ใกล้ๆ */
-}
-
-.steps-container { padding: 20px; display: flex; flex-direction: column; gap: 40px; }
+.main-header h1 { color: #C28329; font-size: 28px; margin-top: 45px; margin-bottom: 5px; }
+.steps-container { padding: 20px 0; display: flex; flex-direction: column; gap: 40px; }
 .step-card { display: flex; align-items: center; gap: 20px; width: 100%; } 
-
-/* ---- ดันกล่องให้ชิดทะลุขอบหน้าจอ ---- */
-.step-card.left { justify-content: flex-start; margin-left: -25px; }
-.step-card.right { justify-content: flex-end; margin-right: -25px; }
-
-/* โครงสร้างกล่องพื้นฐาน */
-.step-content { 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    width: 55%; 
-    background: white; 
-    padding: 15px 10px; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-}
-
-/* ---- ปรับมุมกล่องให้มนแค่ 2 มุม และให้ฝั่งที่ติดขอบจอเป็นมุมฉาก (0px) ---- */
-/* Step ฝั่งซ้าย (มนเฉพาะขวาบน และ ขวาล่าง) */
-.step-card.left .step-content { 
-    border-radius: 0 20px 20px 0; 
-    padding-left: 20px; /* เพิ่มพื้นที่ฝั่งซ้ายนิดหน่อยไม่ให้รูปชิดขอบจอเกินไป */
-}
-
-/* Step ฝั่งขวา (มนเฉพาะซ้ายบน และ ซ้ายล่าง) */
-.step-card.right .step-content { 
-    border-radius: 20px 0 0 20px; 
-    padding-right: 20px; /* เพิ่มพื้นที่ฝั่งขวานิดหน่อยไม่ให้รูปชิดขอบจอเกินไป */
-}
-
+.step-card.left { justify-content: flex-start; padding-left: 0; }
+.step-card.right { justify-content: flex-end; padding-right: 0; }
+.step-content { display: flex; flex-direction: column; align-items: center; width: fit-content; max-width: 75%; min-width: 50%; background: white; padding: 15px 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+.step-card.left .step-content { border-radius: 0 20px 20px 0; padding-left: 20px; }
+.step-card.right .step-content { border-radius: 20px 0 0 20px; padding-right: 20px; }
 .step-card img { width: 100%; border-radius: 10px; }
 .step-label { font-weight: bold; margin-top: 15px; text-align: center; color: #C28329; font-size: 18px; line-height: 1.3; }
 .step-number { font-size: 5rem; font-weight: bold; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
@@ -186,441 +74,94 @@ body { background: url('background01.png') center 0/cover no-repeat; display: fl
 /* =========================================================
    7. Track Status Page Specific
    ========================================================= */
-.track-page .track-buttons {
-    margin-top: auto;
-    padding-bottom: 40px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    width: 100%;
-    z-index: 1;
-}
-
-.track-buttons .btn-orange-compact {
-    padding: 12px 15px;
-    font-size: 16px;
-    flex: 1;
-    max-width: 165px;
-}
-
-.track-buttons .btn-back {
-    background-color: white;
-    color: #d89647;
-    border: 2px solid #d89647;
-}
+.track-page .track-buttons { margin-top: auto; padding-bottom: 40px; display: flex; justify-content: center; gap: 15px; width: 100%; z-index: 1; }
+.track-buttons .btn-orange-compact { padding: 12px 15px; font-size: 16px; flex: 1; max-width: 165px; }
+.track-buttons .btn-back { background-color: white; color: #d89647; border: 2px solid #d89647; }
 
 /* =========================================================
    8. Checkout Page Specific (โครงสร้างขาวบน รูปภาพล่าง)
    ========================================================= */
-.checkout-page .iphone-container {
-    background: url('background01.png') center/cover no-repeat;
-    display: flex;
-    flex-direction: column;
-}
-
-/* กล่องสีขาวด้านบน */
-.top-section { 
-    background: white; 
-    padding: 20px 0 0 0; 
-    position: relative;
-    z-index: 2; /* ให้อยู่เหนือพื้นหลังรูปภาพ */
-}
-
-/* หุ้มส่วนเมนูด้านบน เพื่อจัดระยะซ้าย-ขวา */
-.top-section-inner {
-    padding: 0 20px;
-}
-
-/* --- แถบสถานะ (Progress Bar แนวนอน) --- */
-.checkout-progress {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end; 
-    position: relative;
-    padding: 0 20px;
-    margin-top: 35px;
-    /* ดึงวงกลมให้ลงมาครึ่งนึงตรงกับขอบสุดของกล่องขาวพอดี */
-    margin-bottom: -9px; 
-}
-
-/* เส้นแนวนอนเชื่อมระหว่างจุดทะลุขอบจอ */
-.checkout-progress::before {
-    content: '';
-    position: absolute;
-    bottom: 8px; /* จัดกึ่งกลางจุด */
-    left: 0; /* ทะลุขอบซ้าย */
-    right: 0; /* ทะลุขอบขวา */
-    height: 2px;
-    background-color: #C28329;
-    z-index: 0;
-}
-
-.checkout-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    z-index: 1;
-}
-
-.checkout-step-label {
-    font-size: 11px;
-    font-weight: bold;
-    color: #C28329;
-    text-align: center;
-    margin-bottom: 10px;
-    min-height: 28px; 
-    display: flex;
-    align-items: flex-end; 
-    justify-content: center;
-}
-
-.checkout-step-dot {
-    width: 18px;
-    height: 18px;
-    background-color: white;
-    border: 2px solid #C28329;
-    border-radius: 50%;
-    box-sizing: border-box;
-    position: relative;
-    z-index: 2; /* บังคับให้อยู่เหนือเส้นแนวนอน */
-}
-
-/* เปลี่ยนสีจุดสถานะปัจจุบัน */
-.checkout-step.active .checkout-step-dot {
-    background-color: #C28329;
-}
-
-/* ส่วนกล่องเนื้อหาด้านล่าง */
-.checkout-content {
-    flex: 1;
-    overflow-y: auto;
-    /* ปรับ padding-top เพิ่มขึ้นเล็กน้อย เพราะแถบ progress ถูกดึงลงมา */
-    padding: 25px 20px 30px 20px; 
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    position: relative;
-    z-index: 1;
-}
+.checkout-page .iphone-container { background: url('background01.png') center/cover no-repeat; display: flex; flex-direction: column; }
+.top-section { background: white; padding: 20px 0 0 0; position: relative; z-index: 2; margin-top: 10px; }
+.top-section-inner { padding: 0 20px; }
+.checkout-progress { display: flex; justify-content: space-between; align-items: flex-end; position: relative; padding: 0 20px; margin-top: 35px; margin-bottom: -9px; overflow-x: hidden; }
+.checkout-progress::before { content: ''; position: absolute; bottom: 9px; width: 100vw; left: 50%; transform: translateX(-50%); height: 2px; background-color: #C28329; z-index: 0; }
+.checkout-step { display: flex; flex-direction: column; align-items: center; flex: 1; z-index: 1; }
+.checkout-step-label { font-size: 11px; font-weight: bold; color: #C28329; text-align: center; margin-bottom: 10px; min-height: 28px; display: flex; align-items: flex-end; justify-content: center; }
+.checkout-step-dot { width: 18px; height: 18px; background-color: white; border: 2px solid #C28329; border-radius: 50%; box-sizing: border-box; position: relative; z-index: 2; }
+.checkout-step.active .checkout-step-dot { background-color: #C28329; }
+.checkout-content { flex: 1; overflow-y: auto; padding: 25px 20px 30px 20px; display: flex; flex-direction: column; gap: 20px; position: relative; z-index: 1; margin-top: 10px; }
 .checkout-content::-webkit-scrollbar { display: none; }
-
-/* --- กล่องพื้นหลังกระจก --- */
-.glass-box {
-    background: rgba(223, 203, 178, 0.45);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 15px;
-    padding: 15px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* หัวข้อ Items และ Total Price ให้ส้มหนาตัดพื้นหลัง */
-.box-title {
-    color: #FF8C00; /* สีส้มสว่างจัด */
-    font-size: 20px;
-    font-weight: 900; /* หนักพิเศษ */
-    margin: 0 0 12px 5px;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.5); /* เงาสีดำให้ตัดกับความใสของกรอบ */
-    letter-spacing: 0.5px;
-}
-
-/* --- ส่วนสินค้า (Items) --- */
-.item-card {
-    background: white;
-    border-radius: 12px;
-    padding: 15px 10px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-
-.item-img {
-    width: 90px;
-    object-fit: contain;
-}
-
-.item-details {
-    flex: 1;
-}
-
-.product-id {
-    color: #C28329;
-    margin: 0 0 5px 0;
-    font-size: 16px;
-}
-
-.price-green {
-    color: #08E400; 
-    font-weight: bold;
-    font-size: 13px;
-    margin: 0;
-}
-
-.price-label {
-    color: #81796D;
-    font-size: 12px;
-    margin: 0 0 8px 0;
-}
-
-.item-action {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-.add-more-text {
-    color: #C28329;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-/* แก้ไอคอนจากรูปเป็นขีดลบ (-) */
-.scan-icon {
-    width: 38px;
-    height: 38px;
-    border: 2px solid #C28329;
-    border-radius: 8px;
-    background: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    color: #C28329;
-    font-size: 32px;
-    font-weight: bold;
-    line-height: 0;
-    padding-bottom: 4px; /* ขยับตัวลบให้ลงมาตรงกลางกล่องพอดี */
-    cursor: pointer;
-}
-
-/* --- ส่วน Total Price และช่อง Input --- */
-.input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.date-input {
-    width: 100%;
-    padding: 20px 15px;
-    border-radius: 12px;
-    border: none;
-    font-size: 16px;
-    box-sizing: border-box;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.to-text {
-    text-align: center;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-}
-
-/* --- ปุ่ม Continue --- */
-.checkout-button-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.continue-btn {
-    width: 200px;
-    font-size: 18px;
-    padding: 15px 0;
-}
+.glass-box { background: rgba(223, 203, 178, 0.45); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 15px; padding: 15px; box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); }
+.box-title { color: #C28329; font-size: 20px; font-weight: 700; margin: 0 0 12px 5px; text-shadow: none; letter-spacing: 0.5px; }
+.item-card { background: white; border-radius: 12px; padding: 15px 10px; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.item-img { width: 90px; object-fit: contain; }
+.item-details { flex: 1; }
+.product-id { color: #C28329; margin: 0 0 5px 0; font-size: 16px; }
+.price-green { color: #08E400; font-weight: bold; font-size: 13px; margin: 0; }
+.price-label { color: #81796D; font-size: 12px; margin: 0 0 8px 0; }
+.item-action { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.add-more-text { color: #C28329; font-size: 12px; font-weight: bold; }
+.scan-icon { width: 38px; height: 38px; border: 2px solid #C28329; border-radius: 8px; background: white; display: flex; justify-content: center; align-items: center; color: #C28329; font-size: 32px; font-weight: bold; line-height: 0; padding-bottom: 4px; cursor: pointer; }
+.input-group { display: flex; flex-direction: column; gap: 15px; }
+.date-input { width: 100%; padding: 20px 15px; border-radius: 12px; border: none; font-size: 16px; box-sizing: border-box; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
+.to-text { text-align: center; color: white; font-weight: bold; font-size: 18px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+.checkout-button-wrapper { display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px; width: 100%; }
+.continue-btn { width: 250px; font-size: 18px; padding: 15px 0; text-align: center; border-radius: 14px; background-color: #d89647; color: white; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s; }
+.continue-btn:active { transform: scale(0.98); }
 
 /* =========================================================
-   9. Order Summary & Payment Specifics (เพิ่มใหม่)
+   9. Order Summary & Payment Specifics
    ========================================================= */
-
-/* --- Order Summary Box --- */
-.summary-content {
-    display: flex;
-    flex-direction: column;
-    padding: 0 5px;
-}
-
-.summary-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    color: white;
-    font-size: 16px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* ให้ข้อความอ่านง่ายขึ้นบนพื้นกระจก */
-}
-
-.summary-divider {
-    border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-    margin: 0;
-}
-
-.total-row {
-    color: #FF8C00;
-    font-weight: bold;
-    font-size: 18px;
-    padding-top: 15px;
-    margin-top: 5px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
-}
-
-/* --- Payment Method Box --- */
-.payment-grid {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-    padding-left: 5px;
-    flex-wrap: wrap; /* เผื่อในกรณีหน้าจอเล็กแล้วไอคอนเบียดกัน */
-}
-
-.payment-card {
-    background: white;
-    border-radius: 6px;
-    width: 60px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.payment-card:active {
-    transform: scale(0.95);
-}
-
-.payment-card img {
-    max-width: 80%;
-    max-height: 80%;
-    object-fit: contain;
-}
-
-.cash-section {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding-left: 5px;
-    margin-top: 10px;
-}
-
-.cash-label {
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
-}
-
-.cash-img {
-    height: 40px;
-    width: fit-content;
-    object-fit: contain;
-    border-radius: 6px;
-    background: white; /* ใส่พื้นหลังสีขาวให้กล่อง cash เหมือนพวกบัตรเครดิต */
-    padding: 2px 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.cash-img:active {
-    transform: scale(0.95);
-}
+.summary-content { display: flex; flex-direction: column; padding: 0 5px; }
+.summary-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; color: white; font-size: 16px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+.summary-divider { border: none; border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 0; }
+.total-row { color: #FF8C00; font-weight: bold; font-size: 18px; padding-top: 15px; margin-top: 5px; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
+.payment-grid { display: flex; gap: 10px; margin-bottom: 15px; padding-left: 5px; flex-wrap: wrap; }
+.payment-card { background: white; border-radius: 6px; width: 60px; height: 40px; display: flex; justify-content: center; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s ease; }
+.payment-card:active { transform: scale(0.95); }
+.payment-card img { max-width: 80%; max-height: 80%; object-fit: contain; }
+.cash-section { display: flex; flex-direction: column; gap: 8px; padding-left: 5px; margin-top: 10px; }
+.cash-label { color: white; font-size: 16px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.4); }
+.cash-img { height: 40px; width: fit-content; object-fit: contain; border-radius: 6px; background: white; padding: 2px 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s ease; }
+.cash-img:active { transform: scale(0.95); }
 
 /* =========================================================
    10. Pay Page Specifics (หน้าแสกน QR Code จ่ายเงิน)
    ========================================================= */
+.timer-text { color: #d89647; font-weight: 900; font-size: 16px; text-align: center; margin-top: -5px; margin-bottom: 15px; letter-spacing: 1px; }
+.qr-code-img { width: 100%; height: 100%; object-fit: fill; display: block; }
+.payment-form-box { padding: 20px; }
+.form-title { color: white; font-weight: bold; text-align: center; font-size: 15px; margin-bottom: 18px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+.form-group { margin-bottom: 15px; }
+.form-label { color: white; font-size: 12px; font-weight: bold; margin-bottom: 6px; display: block; text-shadow: 1px 1px 2px rgba(0,0,0,0.4); }
+.custom-input { width: 100%; padding: 10px; border-radius: 6px; border: none; font-size: 14px; box-sizing: border-box; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
+.checkbox-group { display: flex; align-items: center; gap: 10px; margin-top: 20px; }
+.custom-checkbox { width: 18px; height: 18px; cursor: pointer; }
+.checkbox-group label { color: white; font-size: 13px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.4); cursor: pointer; }
+.button-right-wrapper { display: flex; justify-content: flex-end; margin-top: 15px; margin-bottom: 20px; }
 
-/* ตัวหนังสือนับเวลาถอยหลัง */
-.timer-text {
-    color: #d89647;
-    font-weight: 900;
-    font-size: 16px;
-    text-align: center;
-    margin-top: -5px;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-}
-
-/* กำหนดขนาดตรงที่ tag img โดยตรง */
-.qr-code-img {
-    width: 100%;        /* ขยายกว้างเต็มพื้นที่พาเรนต์ */
-    height: 100%;       /* ขยายสูงเต็มพื้นที่พาเรนต์ */
-    object-fit: fill;   /* บังคับให้รูปยืดจนเต็มกรอบ (อาจมีอาการรูปบิดได้ถ้าสัดส่วนไม่เท่ากัน) */
-    display: block;     /* ตัดช่องว่างด้านล่างของรูปออก */
-}
-
-/* ฟอร์มกรอกข้อมูลบัญชี */
-.payment-form-box {
-    padding: 20px;
-}
-
-.form-title {
-    color: white;
-    font-weight: bold;
-    text-align: center;
-    font-size: 15px;
-    margin-bottom: 18px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-label {
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-    margin-bottom: 6px;
-    display: block;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
-}
-
-.custom-input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: none;
-    font-size: 14px;
-    box-sizing: border-box;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
-}
-
-/* ส่วนของ Checkbox */
-.checkbox-group {
+/* =========================================================
+   ปุ่มพิเศษสำหรับหน้า Index (3 ปุ่มเรียงกัน)
+   ========================================================= */
+.index-special-button {
+    flex: 1; /* บังคับให้ปุ่มทั้ง 3 แบ่งความกว้างเท่าๆ กันในระนาบเดียวกัน */
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.custom-checkbox {
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-}
-
-.checkbox-group label {
-    color: white;
-    font-size: 13px;
+    background-color: #d89647; /* พื้นหลังสีส้ม */
+    color: white; /* ตัวอักษรสีขาว */
     font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
-    cursor: pointer;
+    font-size: 14px;
+    padding: 12px 5px; /* เพิ่มพื้นที่ให้กดง่ายขึ้น */
+    text-decoration: none; /* เอาเส้นใต้ลิงก์ออก */
+    border-radius: 8px; /* ขอบมนเล็กน้อยให้ดูทันสมัย */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* เพิ่มเงาให้ดูเป็นปุ่มกด */
+    white-space: nowrap; /* ป้องกันไม่ให้ข้อความตกบรรทัด */
+    transition: transform 0.2s ease;
 }
 
-/* ปุ่ม Continue ชิดขวา */
-.button-right-wrapper {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 15px;
-    margin-bottom: 20px;
+/* เอฟเฟกต์ตอนกดปุ่ม */
+.index-special-button:active {
+    transform: scale(0.95);
 }
