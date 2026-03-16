@@ -5,6 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Track Status - SITMATE</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* จำเป็นต้องใส่ relative เพื่อให้อ้างอิงตำแหน่งเรดาร์ได้ */
+        .step.relative-step {
+            position: relative;
+        }
+
+        /* ตัวเรดาร์แบบลอยทับจุดเดิม */
+        .gps-radar-overlay {
+            position: absolute;
+            top: 50%;
+            /* 📍 จุดสำคัญ: ถ้าจุดยังไม่ตรงเส้นเป๊ะ ให้ขยับเลข left ตรงนี้นะครับ */
+            /* รอบก่อน 65px คุณบอกเกือบถึง ผมเลยลองขยับเป็น 72px ให้ครับ */
+            left: 147px; 
+            
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            z-index: 10;
+            opacity: 0.6; /* 💡 ปรับความสว่างเหลือ 60% ตามที่ขอครับ */
+        }
+
+        .gps-radar-overlay .gps-dot {
+            width: 100%;
+            height: 100%;
+            background-color: #d89647;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 2;
+            box-shadow: 0 0 4px rgba(216, 150, 71, 0.8);
+        }
+
+        .gps-radar-overlay .gps-ring {
+            width: 100%;
+            height: 100%;
+            background-color: #d89647;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            animation: radar-pulse-overlay 2s ease-out infinite;
+        }
+
+        .gps-radar-overlay .gps-ring.delay {
+            animation-delay: 1s;
+        }
+
+        @keyframes radar-pulse-overlay {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(4.0);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 <body class="track-page">
     <div class="iphone-container">
@@ -31,10 +89,19 @@
                     <div class="time orange-text">10:57</div>
                     <div class="label orange-text">Payment Successful</div>
                 </div>
-                <div class="step active completed">
+                
+                <div class="step active completed relative-step">
                     <div class="time orange-text active-text">13:10</div>
+                    
+                    <div class="gps-radar-overlay">
+                        <div class="gps-dot"></div>
+                        <div class="gps-ring"></div>
+                        <div class="gps-ring delay"></div>
+                    </div>
+                    
                     <div class="label orange-text active-text">Currently Rented</div>
                 </div>
+
                 <div class="step">
                     <div class="time"></div>
                     <div class="label">Return at Destination</div>
@@ -50,8 +117,9 @@
             </div>
         </div>
 
-        <div class="checkout-button-wrapper">
+        <div class="checkout-button-wrapper" style="display: flex; justify-content: center; padding: 20px 0; width: 100%;">
             <a href="#" class="btn-orange" style="text-decoration: none; display: inline-block; padding: 10px 20px; background-color: #d89647; color: white; border-radius: 5px; text-align: center; font-weight: bold; position: relative; z-index: 10;">Report a Problem</a>
         </div>
+    </div>
 </body>
 </html>
